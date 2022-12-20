@@ -16,7 +16,9 @@
 </p>  -->
 
 
-Desafio iOS da Stone
+Desafio iOS da Stone que consiste no consumo da [API](https://rickandmortyapi.com/documentation) do Rick and Morty, trazendo algumas informações e fazer uma filtragem. Todas as informações do desafio estão [aqui](https://github.com/Gui25Reis/Stone-Challenge/blob/main/Arquivos/Desafio%20iOS%20Stone.pdf).
+
+Esse desafio foi feito no perído de duas semanas, entre 12/12/22 até 23/12/22 (as 23:59).
 
 1. [Plataforma e Requerimentos](#plataforma-e-requerimentos)
 2. [Frameworks Usados](#frameworks-usados)
