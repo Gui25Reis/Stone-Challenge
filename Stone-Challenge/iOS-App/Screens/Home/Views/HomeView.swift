@@ -11,6 +11,9 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     
     // Views
     
+    /// Search da nav bar
+    private lazy var search = CustomViews.newSearch()
+    
     internal var mainCollection: CustomCollection = CustomCollection()
     
     
@@ -42,6 +45,11 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     
     
     /* MARK: - Encapsulamento */
+    
+    /// Barra de busca da navigation
+    public var searchNavigation: UISearchBar {
+        return self.search
+    }
     
     
 
@@ -81,7 +89,9 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     }
     
     
-    func setupView() {}
+    func setupView() {
+        self.backgroundColor = .systemGray6
+    }
     
     func setupUI() {}
     

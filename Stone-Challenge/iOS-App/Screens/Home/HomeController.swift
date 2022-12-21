@@ -1,7 +1,9 @@
 /* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
+import class UIKit.UIBarButtonItem
 import class UIKit.UIViewController
+
 
 
 /// Controller da tela principal
@@ -56,5 +58,8 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate {
     
     func setupNavigation() {
         self.title = "Caracters"
+        
+        let searchBar = self.myView.searchNavigation
+        self.navigationItem.titleView = searchBar
     }
 }

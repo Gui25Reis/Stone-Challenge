@@ -37,24 +37,12 @@ struct CustomViews {
     }
     
     
-    /// Cria uma imagem (view) de acordo com a padronização do projeto
-    static func newSwitch() -> UISwitch {
-        let swit = UISwitch()
-        swit.translatesAutoresizingMaskIntoConstraints = false
+    /// Cria uma search bar de acordo com a padronização do projeto
+    static func newSearch() -> UISearchBar {
+        let search = UISearchBar()
+        //search.translatesAutoresizingMaskIntoConstraints = false
         
-        return swit
-    }
-    
-    
-    /// Cria um picker de data de acordo com a padronização do projeto
-    static func newDataPicker(mode: UIDatePicker.Mode) -> UIDatePicker {
-        let date = UIDatePicker()
-        date.translatesAutoresizingMaskIntoConstraints = false
-        date.preferredDatePickerStyle = .compact
-        date.datePickerMode = mode
-        date.minuteInterval = 1
-        date.locale = .current
-        
-        return date
+//        search.backgroundColor = .clear
+        return search
     }
  }

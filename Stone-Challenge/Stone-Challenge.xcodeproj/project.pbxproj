@@ -54,6 +54,9 @@
 		222CE6892952CCF200C23AF5 /* InfosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6882952CCF200C23AF5 /* InfosController.swift */; };
 		222CE68C2952CE4500C23AF5 /* CustomCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE68B2952CE4500C23AF5 /* CustomCollection.swift */; };
 		222CE68E2952CEF900C23AF5 /* CollectionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE68D2952CEF900C23AF5 /* CollectionStyle.swift */; };
+		222CE6902952D96F00C23AF5 /* ColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE68F2952D96F00C23AF5 /* ColorAsset.swift */; };
+		222CE6922952E03300C23AF5 /* SearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6912952E03300C23AF5 /* SearchProtocol.swift */; };
+		222CE6942952E09200C23AF5 /* SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6932952E09200C23AF5 /* SearchDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +128,9 @@
 		222CE6882952CCF200C23AF5 /* InfosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosController.swift; sourceTree = "<group>"; };
 		222CE68B2952CE4500C23AF5 /* CustomCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollection.swift; sourceTree = "<group>"; };
 		222CE68D2952CEF900C23AF5 /* CollectionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionStyle.swift; sourceTree = "<group>"; };
+		222CE68F2952D96F00C23AF5 /* ColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAsset.swift; sourceTree = "<group>"; };
+		222CE6912952E03300C23AF5 /* SearchProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProtocol.swift; sourceTree = "<group>"; };
+		222CE6932952E09200C23AF5 /* SearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +241,7 @@
 			children = (
 				222CE65F29522CDC00C23AF5 /* System */,
 				222CE66029522CE700C23AF5 /* GeneralTableDelegate.swift */,
+				222CE6932952E09200C23AF5 /* SearchDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -367,6 +374,7 @@
 				222CE6762952563600C23AF5 /* Collections */,
 				222CE6722952522E00C23AF5 /* ViewCode.swift */,
 				222CE67D29525C9C00C23AF5 /* ControllerActions.swift */,
+				222CE6912952E03300C23AF5 /* SearchProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -403,6 +411,7 @@
 			children = (
 				222CE65529522C1700C23AF5 /* Extensions */,
 				222CE65129522C1500C23AF5 /* AppColors.swift */,
+				222CE68F2952D96F00C23AF5 /* ColorAsset.swift */,
 			);
 			path = Color;
 			sourceTree = "<group>";
@@ -675,14 +684,17 @@
 				222CE66A29522D4100C23AF5 /* UIView+AdpativeLayout.swift in Sources */,
 				222CE66929522D4100C23AF5 /* Screens.swift in Sources */,
 				222CE6842952884600C23AF5 /* CharactersHandler.swift in Sources */,
+				222CE6922952E03300C23AF5 /* SearchProtocol.swift in Sources */,
 				222CE5EF295226D200C23AF5 /* HomeController.swift in Sources */,
 				222CE65E29522C7600C23AF5 /* TableCellData.swift in Sources */,
 				222CE67129524FBA00C23AF5 /* HomeView.swift in Sources */,
 				222CE66729522D4100C23AF5 /* ScreenInfo.swift in Sources */,
 				222CE66129522CE700C23AF5 /* GeneralTableDelegate.swift in Sources */,
 				222CE6372952295B00C23AF5 /* CustomTable.swift in Sources */,
+				222CE6942952E09200C23AF5 /* SearchDelegate.swift in Sources */,
 				222CE64129522B9D00C23AF5 /* GeneralTableCell.swift in Sources */,
 				222CE6812952834300C23AF5 /* CharacterCell.swift in Sources */,
+				222CE6902952D96F00C23AF5 /* ColorAsset.swift in Sources */,
 				222CE6382952295B00C23AF5 /* TableIcon.swift in Sources */,
 				222CE62E295228D100C23AF5 /* UILabel+FontInfo.swift in Sources */,
 				222CE5EB295226D200C23AF5 /* AppDelegate.swift in Sources */,

@@ -78,7 +78,7 @@ class GeneralTableCell: UITableViewCell, CustomTableCell {
     
     /// Personalização da UI
     private func setupUI() {
-        self.backgroundColor = UIColor(.tableColor)
+        self.backgroundColor = UIColor(.tableBackColor)
     }
     
     
