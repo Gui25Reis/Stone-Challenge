@@ -1,15 +1,15 @@
 /* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
-import class UIKit.NSObject
+import protocol UIKit.UITableViewDelegate
 import protocol UIKit.UITableViewDataSource
 
 
-/// Os tipos que ficam de acordo com esse protocolo fazem parte do protocolo do data source
-/// de uma tabela.
+/// Os tipos que estào de acordo com esse protocolo lidam com o funcionamento de uma table,
+/// tanto o delegate quanto o data source dela
 ///
 /// Esse protocolo adiciona o controle de quantidade de dados que uma tabela possui.
-protocol TableDataCount: NSObject, UITableViewDataSource {
+protocol TableHandler: UITableViewDataSource, UITableViewDelegate {
     
     /// Pega a quantidade de dados da tabela
     /// - Parameter dataType: tipo do dado

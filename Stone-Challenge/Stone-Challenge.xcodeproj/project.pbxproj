@@ -33,9 +33,8 @@
 		222CE64E29522BF000C23AF5 /* UIImage+AppIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE64A29522BF000C23AF5 /* UIImage+AppIcons.swift */; };
 		222CE65329522C1500C23AF5 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE65129522C1500C23AF5 /* AppColors.swift */; };
 		222CE65429522C1500C23AF5 /* UIColors+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE65229522C1500C23AF5 /* UIColors+AppColors.swift */; };
-		222CE65929522C3C00C23AF5 /* TableDataCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE65629522C3C00C23AF5 /* TableDataCount.swift */; };
 		222CE65A29522C3C00C23AF5 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE65729522C3C00C23AF5 /* CustomCell.swift */; };
-		222CE65B29522C3C00C23AF5 /* ViewWithTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE65829522C3C00C23AF5 /* ViewWithTable.swift */; };
+		222CE65B29522C3C00C23AF5 /* ViewHasTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE65829522C3C00C23AF5 /* ViewHasTable.swift */; };
 		222CE65E29522C7600C23AF5 /* TableCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE65D29522C7600C23AF5 /* TableCellData.swift */; };
 		222CE66129522CE700C23AF5 /* GeneralTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE66029522CE700C23AF5 /* GeneralTableDelegate.swift */; };
 		222CE66729522D4100C23AF5 /* ScreenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE66329522D4100C23AF5 /* ScreenInfo.swift */; };
@@ -43,6 +42,18 @@
 		222CE66929522D4100C23AF5 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE66529522D4100C23AF5 /* Screens.swift */; };
 		222CE66A29522D4100C23AF5 /* UIView+AdpativeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE66629522D4100C23AF5 /* UIView+AdpativeLayout.swift */; };
 		222CE66E29522D6300C23AF5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE66D29522D6300C23AF5 /* Dimension.swift */; };
+		222CE67129524FBA00C23AF5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE67029524FBA00C23AF5 /* HomeView.swift */; };
+		222CE6732952522E00C23AF5 /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6722952522E00C23AF5 /* ViewCode.swift */; };
+		222CE6752952541400C23AF5 /* ViewHasCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6742952541400C23AF5 /* ViewHasCollection.swift */; };
+		222CE6782952565100C23AF5 /* CollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6772952565100C23AF5 /* CollectionHandler.swift */; };
+		222CE67B29525BAC00C23AF5 /* TableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE67A29525BAC00C23AF5 /* TableHandler.swift */; };
+		222CE67E29525C9C00C23AF5 /* ControllerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE67D29525C9C00C23AF5 /* ControllerActions.swift */; };
+		222CE6812952834300C23AF5 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6802952834300C23AF5 /* CharacterCell.swift */; };
+		222CE6842952884600C23AF5 /* CharactersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6832952884600C23AF5 /* CharactersHandler.swift */; };
+		222CE6872952CBB700C23AF5 /* HomeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6862952CBB700C23AF5 /* HomeDelegate.swift */; };
+		222CE6892952CCF200C23AF5 /* InfosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6882952CCF200C23AF5 /* InfosController.swift */; };
+		222CE68C2952CE4500C23AF5 /* CustomCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE68B2952CE4500C23AF5 /* CustomCollection.swift */; };
+		222CE68E2952CEF900C23AF5 /* CollectionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE68D2952CEF900C23AF5 /* CollectionStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,9 +104,8 @@
 		222CE64A29522BF000C23AF5 /* UIImage+AppIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+AppIcons.swift"; sourceTree = "<group>"; };
 		222CE65129522C1500C23AF5 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		222CE65229522C1500C23AF5 /* UIColors+AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColors+AppColors.swift"; sourceTree = "<group>"; };
-		222CE65629522C3C00C23AF5 /* TableDataCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataCount.swift; sourceTree = "<group>"; };
 		222CE65729522C3C00C23AF5 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		222CE65829522C3C00C23AF5 /* ViewWithTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithTable.swift; sourceTree = "<group>"; };
+		222CE65829522C3C00C23AF5 /* ViewHasTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHasTable.swift; sourceTree = "<group>"; };
 		222CE65D29522C7600C23AF5 /* TableCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellData.swift; sourceTree = "<group>"; };
 		222CE66029522CE700C23AF5 /* GeneralTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableDelegate.swift; sourceTree = "<group>"; };
 		222CE66329522D4100C23AF5 /* ScreenInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenInfo.swift; sourceTree = "<group>"; };
@@ -103,6 +113,18 @@
 		222CE66529522D4100C23AF5 /* Screens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
 		222CE66629522D4100C23AF5 /* UIView+AdpativeLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AdpativeLayout.swift"; sourceTree = "<group>"; };
 		222CE66D29522D6300C23AF5 /* Dimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		222CE67029524FBA00C23AF5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		222CE6722952522E00C23AF5 /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
+		222CE6742952541400C23AF5 /* ViewHasCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHasCollection.swift; sourceTree = "<group>"; };
+		222CE6772952565100C23AF5 /* CollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHandler.swift; sourceTree = "<group>"; };
+		222CE67A29525BAC00C23AF5 /* TableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHandler.swift; sourceTree = "<group>"; };
+		222CE67D29525C9C00C23AF5 /* ControllerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerActions.swift; sourceTree = "<group>"; };
+		222CE6802952834300C23AF5 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		222CE6832952884600C23AF5 /* CharactersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersHandler.swift; sourceTree = "<group>"; };
+		222CE6862952CBB700C23AF5 /* HomeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDelegate.swift; sourceTree = "<group>"; };
+		222CE6882952CCF200C23AF5 /* InfosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosController.swift; sourceTree = "<group>"; };
+		222CE68B2952CE4500C23AF5 /* CustomCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollection.swift; sourceTree = "<group>"; };
+		222CE68D2952CEF900C23AF5 /* CollectionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +266,9 @@
 		222CE6242952274400C23AF5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				222CE6852952CBA500C23AF5 /* Protocol */,
+				222CE6822952881A00C23AF5 /* Handler */,
+				222CE66F29524FA800C23AF5 /* Views */,
 				222CE5EE295226D200C23AF5 /* HomeController.swift */,
 			);
 			path = Home;
@@ -252,6 +277,7 @@
 		222CE6252952274C00C23AF5 /* Infos */ = {
 			isa = PBXGroup;
 			children = (
+				222CE6882952CCF200C23AF5 /* InfosController.swift */,
 			);
 			path = Infos;
 			sourceTree = "<group>";
@@ -298,8 +324,9 @@
 		222CE6322952293B00C23AF5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				222CE64329522BCD00C23AF5 /* CustomButton */,
 				222CE63D29522B8E00C23AF5 /* GeneralCell */,
+				222CE64329522BCD00C23AF5 /* CustomButton */,
+				222CE68A2952CE1A00C23AF5 /* CustomCollection */,
 				222CE6332952294300C23AF5 /* CustomTable */,
 				222CE63B29522B8700C23AF5 /* CustomViews.swift */,
 			);
@@ -335,10 +362,11 @@
 		222CE64229522BA300C23AF5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				222CE65729522C3C00C23AF5 /* CustomCell.swift */,
-				222CE65629522C3C00C23AF5 /* TableDataCount.swift */,
-				222CE65829522C3C00C23AF5 /* ViewWithTable.swift */,
-				222CE63E29522B9D00C23AF5 /* CustomTableCell.swift */,
+				222CE67C29525C7D00C23AF5 /* Células */,
+				222CE679295256D400C23AF5 /* Table */,
+				222CE6762952563600C23AF5 /* Collections */,
+				222CE6722952522E00C23AF5 /* ViewCode.swift */,
+				222CE67D29525C9C00C23AF5 /* ControllerActions.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -430,6 +458,76 @@
 				222CE66529522D4100C23AF5 /* Screens.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		222CE66F29524FA800C23AF5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				222CE67F2952832B00C23AF5 /* Cell */,
+				222CE67029524FBA00C23AF5 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		222CE6762952563600C23AF5 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				222CE6742952541400C23AF5 /* ViewHasCollection.swift */,
+				222CE6772952565100C23AF5 /* CollectionHandler.swift */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
+		222CE679295256D400C23AF5 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				222CE65829522C3C00C23AF5 /* ViewHasTable.swift */,
+				222CE67A29525BAC00C23AF5 /* TableHandler.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		222CE67C29525C7D00C23AF5 /* Células */ = {
+			isa = PBXGroup;
+			children = (
+				222CE65729522C3C00C23AF5 /* CustomCell.swift */,
+				222CE63E29522B9D00C23AF5 /* CustomTableCell.swift */,
+			);
+			name = "Células";
+			path = "Células";
+			sourceTree = "<group>";
+		};
+		222CE67F2952832B00C23AF5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				222CE6802952834300C23AF5 /* CharacterCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		222CE6822952881A00C23AF5 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				222CE6832952884600C23AF5 /* CharactersHandler.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		222CE6852952CBA500C23AF5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				222CE6862952CBB700C23AF5 /* HomeDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		222CE68A2952CE1A00C23AF5 /* CustomCollection */ = {
+			isa = PBXGroup;
+			children = (
+				222CE68B2952CE4500C23AF5 /* CustomCollection.swift */,
+				222CE68D2952CEF900C23AF5 /* CollectionStyle.swift */,
+			);
+			path = CustomCollection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,25 +665,36 @@
 				222CE6392952295B00C23AF5 /* TableStyles.swift in Sources */,
 				222CE66829522D4100C23AF5 /* AdaptiveLayout.swift in Sources */,
 				222CE62F295228D100C23AF5 /* UIButton+FontInfo.swift in Sources */,
+				222CE6872952CBB700C23AF5 /* HomeDelegate.swift in Sources */,
 				222CE64029522B9D00C23AF5 /* CustomTableCell.swift in Sources */,
-				222CE65B29522C3C00C23AF5 /* ViewWithTable.swift in Sources */,
+				222CE65B29522C3C00C23AF5 /* ViewHasTable.swift in Sources */,
 				222CE64D29522BF000C23AF5 /* AppIcons.swift in Sources */,
+				222CE6732952522E00C23AF5 /* ViewCode.swift in Sources */,
+				222CE6752952541400C23AF5 /* ViewHasCollection.swift in Sources */,
+				222CE68E2952CEF900C23AF5 /* CollectionStyle.swift in Sources */,
 				222CE66A29522D4100C23AF5 /* UIView+AdpativeLayout.swift in Sources */,
 				222CE66929522D4100C23AF5 /* Screens.swift in Sources */,
+				222CE6842952884600C23AF5 /* CharactersHandler.swift in Sources */,
 				222CE5EF295226D200C23AF5 /* HomeController.swift in Sources */,
 				222CE65E29522C7600C23AF5 /* TableCellData.swift in Sources */,
-				222CE65929522C3C00C23AF5 /* TableDataCount.swift in Sources */,
+				222CE67129524FBA00C23AF5 /* HomeView.swift in Sources */,
 				222CE66729522D4100C23AF5 /* ScreenInfo.swift in Sources */,
 				222CE66129522CE700C23AF5 /* GeneralTableDelegate.swift in Sources */,
 				222CE6372952295B00C23AF5 /* CustomTable.swift in Sources */,
 				222CE64129522B9D00C23AF5 /* GeneralTableCell.swift in Sources */,
+				222CE6812952834300C23AF5 /* CharacterCell.swift in Sources */,
 				222CE6382952295B00C23AF5 /* TableIcon.swift in Sources */,
 				222CE62E295228D100C23AF5 /* UILabel+FontInfo.swift in Sources */,
 				222CE5EB295226D200C23AF5 /* AppDelegate.swift in Sources */,
 				222CE64E29522BF000C23AF5 /* UIImage+AppIcons.swift in Sources */,
 				222CE630295228D100C23AF5 /* FontInfo.swift in Sources */,
+				222CE6892952CCF200C23AF5 /* InfosController.swift in Sources */,
 				222CE65329522C1500C23AF5 /* AppColors.swift in Sources */,
 				222CE5ED295226D200C23AF5 /* SceneDelegate.swift in Sources */,
+				222CE67B29525BAC00C23AF5 /* TableHandler.swift in Sources */,
+				222CE68C2952CE4500C23AF5 /* CustomCollection.swift in Sources */,
+				222CE67E29525C9C00C23AF5 /* ControllerActions.swift in Sources */,
+				222CE6782952565100C23AF5 /* CollectionHandler.swift in Sources */,
 				222CE63C29522B8700C23AF5 /* CustomViews.swift in Sources */,
 				222CE5F5295226D200C23AF5 /* Stone_Challenge.xcdatamodeld in Sources */,
 				222CE62D295228D100C23AF5 /* UIFont+setupFont.swift in Sources */,

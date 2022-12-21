@@ -22,7 +22,7 @@ import UIKit
 /// **ATENÇÃO**: Não é recomendado fazer uma configuração direta nos atributos da view,
 /// faça o encapsulamento caso precise de alguma configuração que não tenha
 ///
-class CustomTable: UIView {
+class CustomTable: UIView, ViewCode {
     
     /* MARK: - Atributos */
 
@@ -76,9 +76,6 @@ class CustomTable: UIView {
     
     /* Constraints */
     
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
     /// Constraints de altura do componente
     private var heightConstraints: [NSLayoutConstraint] = []
 
@@ -92,16 +89,19 @@ class CustomTable: UIView {
     private var customHeight = false
     
     
+    /* Protocol */
+    
+    var dynamicConstraints: [NSLayoutConstraint] = []
+    
+    
     
     /* MARK: - Construtor */
     
     init(style: TableStyle) {
         self.style = style
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.setupViews()
-        self.setupStaticConstraints()
+        self.createView()
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -178,17 +178,23 @@ class CustomTable: UIView {
     }
     
     
-    /// Define o data source da table
-    /// - Parameter dataSource: data source da table
-    public func setDataSource(with dataSource: TableDataCount) {
-        self.tableView.dataSource = dataSource
+    /// Configura quem vai lidar com o data source e delegate da table
+    /// - Parameter handler: tipo que vai lidar com o data source e delegate da table
+    public func setupHandler(with handler: TableHandler) {
+        self.tableView.delegate = handler
+        self.tableView.dataSource = handler
     }
     
     
-    /// Define o delegate da table
-    /// - Parameter dataSource: delegate da table
-    public func setDelegate(with delegate: UITableViewDelegate) {
-        self.tableView.delegate = delegate
+    /// Pega a altura da table de acordo com a quantidade de dados que ela tem
+    /// - Returns: altura da table
+    public func getTableHeight() -> CGFloat {
+        if let data = self.tableView.dataSource as? TableHandler {
+            let dataCount = data.getDataCount(for: self.tableView.tag)
+            let tableHeight = CGFloat(dataCount) * self.tableView.rowHeight
+            return tableHeight
+        }
+        return 0
     }
     
     
@@ -198,34 +204,20 @@ class CustomTable: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
     
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
+        self.dynamicCall()
         self.setupHeight()
     }
     
-    
+
     
     /* MARK: - Configurações */
     
-    /* Geral */
-    
-    /// Pega a altura da table de acordo com a quantidade de dados que ela tem
-    /// - Returns: altura da table
-    public func getTableHeight() -> CGFloat {
-        if let data = self.tableView.dataSource as? TableDataCount {
-            let dataCount = data.getDataCount(for: self.tableView.tag)
-            let tableHeight = CGFloat(dataCount) * self.tableView.rowHeight
-            return tableHeight
-        }
-        return 0
+    internal func setupView() {
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     
-    /* UI */
-    
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
+    internal func setupHierarchy() {
         self.addSubview(self.tableView)
         
         switch self.style {
@@ -244,14 +236,10 @@ class CustomTable: UIView {
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
-        self.tableView.layer.cornerRadius = self.superview?.getEquivalent(10) ?? 0
-    }
+    internal func setupStaticTexts() {}
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
+    internal func setupFonts() {
         if self.style != .justTable {
             let fontInfo = FontInfo(
                 fontSize: self.superview?.getEquivalent(13) ?? 13,
@@ -273,10 +261,14 @@ class CustomTable: UIView {
             }
         }
     }
+        
+    
+    internal func setupUI() {
+        self.tableView.layer.cornerRadius = self.superview?.getEquivalent(10) ?? 0
+    }
     
     
-    /// Define as constraints que NÃO dependem do tamanho da tela
-    private func setupStaticConstraints() {
+    internal func setupStaticConstraints() {
         var staticConstraints: [NSLayoutConstraint] = [
             self.tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -298,15 +290,16 @@ class CustomTable: UIView {
     }
         
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
+    internal func setupDynamicConstraints() {
         let between: CGFloat = self.superview?.getEquivalent(5) ?? 5
         let lateral: CGFloat = self.superview?.getEquivalent(15) ?? 15
         
         let headerHeight: CGFloat = lateral
         
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        self.dynamicConstraints = []
+        if !self.dynamicConstraints.isEmpty {
+            NSLayoutConstraint.deactivate(self.dynamicConstraints)
+            self.dynamicConstraints.removeAll()
+        }
         
         switch style {
         case .justTable: break
@@ -357,6 +350,9 @@ class CustomTable: UIView {
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
     
+    
+    
+    /* MARK: - Configurações */
     
     /// Configura a altrua do componente
     private func setupHeight() {

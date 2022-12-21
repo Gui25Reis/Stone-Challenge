@@ -2,19 +2,20 @@
 
 /* Bibliotecas necessárias: */
 import class UIKit.UIViewController
+import class UIKit.UIView
 
 
-/// Controller da tela principal
-class HomeController: UIViewController, ControllerActions, HomeDelegate {
+/// Controller da tela de informações de um personagem
+class InfosController: UIViewController, ControllerActions {
     
     /* MARK: - Atributos */
     
     /// View principal que a controller vai usar
-    private let myView = HomeView()
+    private let myView = UIView()
     
     
-    /// Handler da collection dos personagens
-    private let collectionHandler = CharactersHandler()
+    /// Handler da table de informa;còes do personagens
+//    private let tableHandler =
     
     
     
@@ -35,11 +36,6 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate {
     
     /* MARK: - Protocolos */
     
-    /* Home Delegate */
-    
-    internal func openCharacterPage(at index: Int) {
-        
-    }
     
     
     /* Controller Action */
@@ -47,14 +43,10 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate {
     func setupButtonsAction() {}
     
     
-    func setupDelegates() {
-        self.collectionHandler.setHomeDelegate(with: self)
-        
-        self.collectionHandler.link(with: self.myView.mainCollection.collection)
-    }
+    func setupDelegates() {}
     
     
     func setupNavigation() {
-        self.title = "Caracters"
+        self.title = "Infos"
     }
 }
