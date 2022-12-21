@@ -5,9 +5,8 @@ import class UIKit.UIBarButtonItem
 import class UIKit.UIViewController
 
 
-
 /// Controller da tela principal
-class HomeController: UIViewController, ControllerActions, HomeDelegate {
+class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchProtocol {
     
     /* MARK: - Atributos */
     
@@ -17,6 +16,9 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate {
     
     /// Handler da collection dos personagens
     private let collectionHandler = CharactersHandler()
+    
+    /// Handler da search bar da navigation
+    private let searchHandler = SearchHandler()
     
     
     
@@ -44,12 +46,20 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate {
     }
     
     
-    /* Controller Action */
+    /* Search Protocol */
+    
+    func filterData(by textSearch: String) {
+        
+    }
+    
+    
+    /* Controller Actions */
     
     func setupButtonsAction() {}
     
     
     func setupDelegates() {
+        self.searchHandler.setProtocol(with: self)
         self.collectionHandler.setHomeDelegate(with: self)
         
         self.collectionHandler.link(with: self.myView.mainCollection.collection)
@@ -59,7 +69,6 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate {
     func setupNavigation() {
         self.title = "Caracters"
         
-        let searchBar = self.myView.searchNavigation
-        self.navigationItem.titleView = searchBar
+        self.navigationItem.searchController = self.searchHandler
     }
 }

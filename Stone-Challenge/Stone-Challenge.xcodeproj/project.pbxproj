@@ -57,6 +57,7 @@
 		222CE6902952D96F00C23AF5 /* ColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE68F2952D96F00C23AF5 /* ColorAsset.swift */; };
 		222CE6922952E03300C23AF5 /* SearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6912952E03300C23AF5 /* SearchProtocol.swift */; };
 		222CE6942952E09200C23AF5 /* SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6932952E09200C23AF5 /* SearchDelegate.swift */; };
+		222CE697295381D600C23AF5 /* SearchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE696295381D600C23AF5 /* SearchHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		222CE68F2952D96F00C23AF5 /* ColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAsset.swift; sourceTree = "<group>"; };
 		222CE6912952E03300C23AF5 /* SearchProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProtocol.swift; sourceTree = "<group>"; };
 		222CE6932952E09200C23AF5 /* SearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDelegate.swift; sourceTree = "<group>"; };
+		222CE696295381D600C23AF5 /* SearchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 		222CE61E295226F200C23AF5 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				222CE695295381C500C23AF5 /* Handler */,
 				222CE6202952270400C23AF5 /* Delegate */,
 			);
 			path = General;
@@ -539,6 +542,14 @@
 			path = CustomCollection;
 			sourceTree = "<group>";
 		};
+		222CE695295381C500C23AF5 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				222CE696295381D600C23AF5 /* SearchHandler.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -687,6 +698,7 @@
 				222CE6922952E03300C23AF5 /* SearchProtocol.swift in Sources */,
 				222CE5EF295226D200C23AF5 /* HomeController.swift in Sources */,
 				222CE65E29522C7600C23AF5 /* TableCellData.swift in Sources */,
+				222CE697295381D600C23AF5 /* SearchHandler.swift in Sources */,
 				222CE67129524FBA00C23AF5 /* HomeView.swift in Sources */,
 				222CE66729522D4100C23AF5 /* ScreenInfo.swift in Sources */,
 				222CE66129522CE700C23AF5 /* GeneralTableDelegate.swift in Sources */,
