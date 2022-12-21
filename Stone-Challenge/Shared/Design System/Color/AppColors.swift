@@ -50,6 +50,15 @@ enum AppColors {
     case viewBack
     
     
+    /* Textos */
+    
+    /// Texto mais usados
+    case primaryText
+    
+    /// Textos não tão usados
+    case secondaryText
+    
+    
     /* MARK: - Nome das cores */
     
     /// Nome do asset da cor
@@ -79,6 +88,9 @@ enum AppColors {
         switch self {
         case .button: return .systemBlue
         case .viewBack: return .systemGray6
+        
+        case .primaryText: return .label
+        case .secondaryText: return .white
             
         default: return nil
         }

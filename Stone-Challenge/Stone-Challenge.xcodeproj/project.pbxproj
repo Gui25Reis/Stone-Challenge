@@ -58,6 +58,10 @@
 		222CE6922952E03300C23AF5 /* SearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6912952E03300C23AF5 /* SearchProtocol.swift */; };
 		222CE6942952E09200C23AF5 /* SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6932952E09200C23AF5 /* SearchDelegate.swift */; };
 		222CE697295381D600C23AF5 /* SearchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE696295381D600C23AF5 /* SearchHandler.swift */; };
+		222CE69C2953867700C23AF5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE69B2953867700C23AF5 /* Tag.swift */; };
+		222CE69F29538C9E00C23AF5 /* TagInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE69E29538C9E00C23AF5 /* TagInfos.swift */; };
+		222CE6A129538D1100C23AF5 /* GenderTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6A029538D1100C23AF5 /* GenderTag.swift */; };
+		222CE6A329538D5900C23AF5 /* StatusTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6A229538D5900C23AF5 /* StatusTag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +137,10 @@
 		222CE6912952E03300C23AF5 /* SearchProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProtocol.swift; sourceTree = "<group>"; };
 		222CE6932952E09200C23AF5 /* SearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDelegate.swift; sourceTree = "<group>"; };
 		222CE696295381D600C23AF5 /* SearchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHandler.swift; sourceTree = "<group>"; };
+		222CE69B2953867700C23AF5 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		222CE69E29538C9E00C23AF5 /* TagInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagInfos.swift; sourceTree = "<group>"; };
+		222CE6A029538D1100C23AF5 /* GenderTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTag.swift; sourceTree = "<group>"; };
+		222CE6A229538D5900C23AF5 /* StatusTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +342,7 @@
 		222CE6322952293B00C23AF5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				222CE6982953862800C23AF5 /* Tag */,
 				222CE63D29522B8E00C23AF5 /* GeneralCell */,
 				222CE64329522BCD00C23AF5 /* CustomButton */,
 				222CE68A2952CE1A00C23AF5 /* CustomCollection */,
@@ -430,6 +439,7 @@
 		222CE65C29522C6E00C23AF5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				222CE69D29538A2600C23AF5 /* Tags */,
 				222CE65D29522C7600C23AF5 /* TableCellData.swift */,
 			);
 			path = Models;
@@ -548,6 +558,24 @@
 				222CE696295381D600C23AF5 /* SearchHandler.swift */,
 			);
 			path = Handler;
+			sourceTree = "<group>";
+		};
+		222CE6982953862800C23AF5 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				222CE69B2953867700C23AF5 /* Tag.swift */,
+				222CE69E29538C9E00C23AF5 /* TagInfos.swift */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
+		222CE69D29538A2600C23AF5 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				222CE6A029538D1100C23AF5 /* GenderTag.swift */,
+				222CE6A229538D5900C23AF5 /* StatusTag.swift */,
+			);
+			path = Tags;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -685,6 +713,7 @@
 				222CE6392952295B00C23AF5 /* TableStyles.swift in Sources */,
 				222CE66829522D4100C23AF5 /* AdaptiveLayout.swift in Sources */,
 				222CE62F295228D100C23AF5 /* UIButton+FontInfo.swift in Sources */,
+				222CE6A129538D1100C23AF5 /* GenderTag.swift in Sources */,
 				222CE6872952CBB700C23AF5 /* HomeDelegate.swift in Sources */,
 				222CE64029522B9D00C23AF5 /* CustomTableCell.swift in Sources */,
 				222CE65B29522C3C00C23AF5 /* ViewHasTable.swift in Sources */,
@@ -696,6 +725,7 @@
 				222CE66929522D4100C23AF5 /* Screens.swift in Sources */,
 				222CE6842952884600C23AF5 /* CharactersHandler.swift in Sources */,
 				222CE6922952E03300C23AF5 /* SearchProtocol.swift in Sources */,
+				222CE69C2953867700C23AF5 /* Tag.swift in Sources */,
 				222CE5EF295226D200C23AF5 /* HomeController.swift in Sources */,
 				222CE65E29522C7600C23AF5 /* TableCellData.swift in Sources */,
 				222CE697295381D600C23AF5 /* SearchHandler.swift in Sources */,
@@ -715,12 +745,14 @@
 				222CE6892952CCF200C23AF5 /* InfosController.swift in Sources */,
 				222CE65329522C1500C23AF5 /* AppColors.swift in Sources */,
 				222CE5ED295226D200C23AF5 /* SceneDelegate.swift in Sources */,
+				222CE69F29538C9E00C23AF5 /* TagInfos.swift in Sources */,
 				222CE67B29525BAC00C23AF5 /* TableHandler.swift in Sources */,
 				222CE68C2952CE4500C23AF5 /* CustomCollection.swift in Sources */,
 				222CE67E29525C9C00C23AF5 /* ControllerActions.swift in Sources */,
 				222CE6782952565100C23AF5 /* CollectionHandler.swift in Sources */,
 				222CE63C29522B8700C23AF5 /* CustomViews.swift in Sources */,
 				222CE5F5295226D200C23AF5 /* Stone_Challenge.xcdatamodeld in Sources */,
+				222CE6A329538D5900C23AF5 /* StatusTag.swift in Sources */,
 				222CE62D295228D100C23AF5 /* UIFont+setupFont.swift in Sources */,
 				222CE64B29522BF000C23AF5 /* IconInfo.swift in Sources */,
 				222CE65429522C1500C23AF5 /* UIColors+AppColors.swift in Sources */,
