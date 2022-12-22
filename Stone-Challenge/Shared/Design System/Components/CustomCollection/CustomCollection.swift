@@ -32,6 +32,7 @@ public class CustomCollection: UIView, ViewCode {
         col.showsHorizontalScrollIndicator = false
         col.showsVerticalScrollIndicator = false
         
+        col.backgroundColor = .clear
         return col
     }()
 

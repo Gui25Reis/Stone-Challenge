@@ -27,6 +27,9 @@ enum AppColors {
     case genderGenderless
     
     case genderUnknown
+    
+    
+    case noneTag
 
     
     /* Componentes */
@@ -91,6 +94,8 @@ enum AppColors {
         
         case .primaryText: return .label
         case .secondaryText: return .white
+        
+        case .noneTag: return .clear
             
         default: return nil
         }

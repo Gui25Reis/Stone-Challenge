@@ -12,7 +12,11 @@ class Tag: UIView, ViewCode {
 
     // Views
     
-    private let label = CustomViews.newLabel(align: .left)
+    private let label: UILabel = {
+        let lbl = CustomViews.newLabel(align: .center)
+        lbl.textColor = UIColor(.primaryText)
+        return lbl
+    }()
     
     
     // Outros
@@ -23,11 +27,11 @@ class Tag: UIView, ViewCode {
 
     /* MARK: - Construtor */
     
-    init(tagInfo: TagInfo) {
+    init(tagInfo: (any TagInfo)?) {
         super.init(frame: .zero)
         
         self.createView()
-        self.setupTag(with: tagInfo)
+        self.setupTag(with: tagInfo ?? GenderTag.male)
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -36,9 +40,23 @@ class Tag: UIView, ViewCode {
     
     /* MARK: - Encapsulamento */
     
+    public var isDefaultSize = false {
+        didSet {
+            self.setupDynamicConstraints()
+        }
+    }
+    
+    
+    public var defaultSize = CGSize(width: 55, height: 20) {
+        didSet {
+            self.setupDynamicConstraints()
+        }
+    }
+    
+    
     /// Configura a tag a partir das informações passadas
     /// - Parameter infos: informações da tag
-    public func setupTag(with infos: TagInfo) {
+    public func setupTag(with infos: any TagInfo) {
         self.label.text = infos.name
         self.backgroundColor = UIColor(infos.color)
     }
@@ -76,7 +94,7 @@ class Tag: UIView, ViewCode {
         let fontSize = self.frame.height * 0.6
         
         self.label.setupText(with: FontInfo(
-            fontSize: fontSize, weight: .black
+            fontSize: fontSize, weight: .regular
         ))
     }
     
@@ -91,9 +109,55 @@ class Tag: UIView, ViewCode {
     }
     
     
-    internal func setupDynamicConstraints() {}
+    internal func setupDynamicConstraints() {
+        guard self.isDefaultSize else { return }
+        
+        NSLayoutConstraint.deactivate(self.dynamicConstraints)
+
+        self.dynamicConstraints = [
+            self.heightAnchor.constraint(equalToConstant: self.defaultSize.height),
+            self.heightAnchor.constraint(equalToConstant: self.defaultSize.width),
+        ]
+
+        NSLayoutConstraint.activate(self.dynamicConstraints)
+    }
+    
     
     internal func setupUI() {}
     
     internal func setupStaticTexts() {}
+    
+    
+    
+    /// Pega uma imagem a partir do componente de status (UIView -> UIImage)
+    /// - Parameter status: tipo do componente
+    /// - Returns: imagem do componente
+    static func getImage(for infos: any TagInfo) -> UIImage {
+        let view: Tag = Tag(tagInfo: infos)
+        
+        let size = view.defaultSize
+        view.bounds.size = size
+
+        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
+        let image = renderer.image { render in
+            view.layer.render(in: render.cgContext)
+        }
+        
+        return image
+    }
+    
+  /*
+    /// Pega uma imagem a partir do componente de status (UIView -> UIImage)
+    /// - Parameter status: tipo do componente
+    /// - Returns: imagem do componente
+    static func getImage(for status: String) -> UIImage {
+        for item in StatusViewStyle.allCases {
+            if status == item.word {
+                return Self.getImage(for: item)
+            }
+        }
+        
+        return UIImage()
+    }
+   */
 }

@@ -1,8 +1,11 @@
 /* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
+import class UIKit.UIAction
 import class UIKit.UIBarButtonItem
+import class UIKit.UIMenu
 import class UIKit.UIViewController
+
 
 
 /// Controller da tela principal
@@ -55,7 +58,13 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     
     /* Controller Actions */
     
-    func setupButtonsAction() {}
+    func setupButtonsAction() {
+        let statusMenu = self.createMenu(for: StatusTag.self)
+        self.myView.setStatusFilterMenu(with: statusMenu)
+        
+        let genderMenu = self.createMenu(for: GenderTag.self)
+        self.myView.setGenderFilterMenu(with: genderMenu)
+    }
     
     
     func setupDelegates() {
@@ -70,5 +79,35 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
         self.title = "Caracters"
         
         self.navigationItem.searchController = self.searchHandler
+    }
+    
+    
+    /* MARK: - Configurações */
+    
+    /// Cria o context menu para a célula de mostrar os estados disponiveis
+    /// - Parameter cell: célula que vai ser atribuida o menu
+    private func createMenu<T: TagInfo>(for enumType: T.Type) -> UIMenu {
+        var title = ""
+        var actions: [UIAction] = []
+        
+        for item in enumType.allCases {
+            let action = UIAction(
+                title: item.name,
+                image: Tag.getImage(for: item)
+            ) {_ in
+                self.filterAction(with: item)
+            }
+            
+            actions.append(action)
+            title = item.filter.title
+        }
+        
+        return UIMenu(title: title, children: actions)
+    }
+    
+    
+    
+    private func filterAction(with item: any TagInfo) {
+        self.myView.updateMenuTagSelected(to: item)
     }
 }
