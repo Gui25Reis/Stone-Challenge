@@ -59,6 +59,8 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
 
         case .status:
             self.statusFilter.setActiveTag(with: tagInfo)
+        
+        default: break
         }
         
         print("Tag selecionada: \(tagInfo.name)")

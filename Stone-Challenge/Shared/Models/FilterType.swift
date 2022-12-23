@@ -7,16 +7,18 @@ enum FilterType {
     
     case gender
     case status
+    case name
     
     
     
-    /* MARK: - Casos */
+    /* MARK: - Atributos */
     
     /// Nome do filtro
     var title: String {
         switch self {
         case .gender: return "Gender"
         case .status: return "Status"
+        default: return ""
         }
     }
     
@@ -25,6 +27,7 @@ enum FilterType {
         switch self {
         case .gender: return "gender"
         case .status: return "status"
+        case .name: return "name"
         }
     }
 }

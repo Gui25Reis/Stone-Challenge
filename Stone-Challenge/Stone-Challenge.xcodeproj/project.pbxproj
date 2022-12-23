@@ -64,6 +64,16 @@
 		222CE6A329538D5900C23AF5 /* StatusTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6A229538D5900C23AF5 /* StatusTag.swift */; };
 		222CE6A62953C7DA00C23AF5 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6A52953C7DA00C23AF5 /* FilterButton.swift */; };
 		222CE6A92954DB6200C23AF5 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6A82954DB6200C23AF5 /* FilterType.swift */; };
+		222CE6AB2954DD5300C23AF5 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6AA2954DD5300C23AF5 /* APIError.swift */; };
+		222CE6AE2954DE2800C23AF5 /* ErrorWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6AD2954DE2800C23AF5 /* ErrorWarnings.swift */; };
+		222CE6B12954E07300C23AF5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6B02954E07300C23AF5 /* APIManager.swift */; };
+		222CE6B329550DFE00C23AF5 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6B229550DFE00C23AF5 /* APIModels.swift */; };
+		222CE6B529550E8200C23AF5 /* APIQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6B429550E8200C23AF5 /* APIQueries.swift */; };
+		222CE6B729550ECB00C23AF5 /* ManagedGeneralData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6B629550ECB00C23AF5 /* ManagedGeneralData.swift */; };
+		222CE6B92955592800C23AF5 /* ManagedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6B82955592800C23AF5 /* ManagedCharacter.swift */; };
+		222CE6BC295560E600C23AF5 /* String+strip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6BB295560E600C23AF5 /* String+strip.swift */; };
+		222CE6BE2955649500C23AF5 /* ManagedEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6BD2955649500C23AF5 /* ManagedEpisodes.swift */; };
+		222CE6C0295566EF00C23AF5 /* ManagedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6BF295566EF00C23AF5 /* ManagedLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +155,16 @@
 		222CE6A229538D5900C23AF5 /* StatusTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTag.swift; sourceTree = "<group>"; };
 		222CE6A52953C7DA00C23AF5 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		222CE6A82954DB6200C23AF5 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
+		222CE6AA2954DD5300C23AF5 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		222CE6AD2954DE2800C23AF5 /* ErrorWarnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWarnings.swift; sourceTree = "<group>"; };
+		222CE6B02954E07300C23AF5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		222CE6B229550DFE00C23AF5 /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
+		222CE6B429550E8200C23AF5 /* APIQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQueries.swift; sourceTree = "<group>"; };
+		222CE6B629550ECB00C23AF5 /* ManagedGeneralData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedGeneralData.swift; sourceTree = "<group>"; };
+		222CE6B82955592800C23AF5 /* ManagedCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCharacter.swift; sourceTree = "<group>"; };
+		222CE6BB295560E600C23AF5 /* String+strip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+strip.swift"; sourceTree = "<group>"; };
+		222CE6BD2955649500C23AF5 /* ManagedEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedEpisodes.swift; sourceTree = "<group>"; };
+		222CE6BF295566EF00C23AF5 /* ManagedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				222CE61D295226EB00C23AF5 /* Shared */,
+				222CE6BA295560C600C23AF5 /* Extensions */,
 				222CE5E9295226D200C23AF5 /* iOS-App */,
 				222CE603295226D500C23AF5 /* Stone-ChallengeTests */,
 				222CE60D295226D500C23AF5 /* Stone-ChallengeUITests */,
@@ -223,12 +244,12 @@
 		222CE61D295226EB00C23AF5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				222CE6A72954DA4400C23AF5 /* API */,
-				222CE66229522D2400C23AF5 /* AdaptiveLayout */,
-				222CE65C29522C6E00C23AF5 /* Models */,
-				222CE6272952288200C23AF5 /* Design System */,
-				222CE6222952272800C23AF5 /* Storage */,
 				222CE6212952271A00C23AF5 /* Assets */,
+				222CE6222952272800C23AF5 /* Storage */,
+				222CE6272952288200C23AF5 /* Design System */,
+				222CE66229522D2400C23AF5 /* AdaptiveLayout */,
+				222CE6A72954DA4400C23AF5 /* API */,
+				222CE65C29522C6E00C23AF5 /* Models */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -393,6 +414,7 @@
 				222CE6722952522E00C23AF5 /* ViewCode.swift */,
 				222CE67D29525C9C00C23AF5 /* ControllerActions.swift */,
 				222CE6912952E03300C23AF5 /* SearchProtocol.swift */,
+				222CE6AD2954DE2800C23AF5 /* ErrorWarnings.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -445,6 +467,7 @@
 		222CE65C29522C6E00C23AF5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				222CE6AF2954E03400C23AF5 /* Managed */,
 				222CE69D29538A2600C23AF5 /* Tags */,
 				222CE65D29522C7600C23AF5 /* TableCellData.swift */,
 				222CE6A82954DB6200C23AF5 /* FilterType.swift */,
@@ -596,8 +619,39 @@
 		222CE6A72954DA4400C23AF5 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				222CE6C1295567B200C23AF5 /* Models */,
+				222CE6B02954E07300C23AF5 /* APIManager.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		222CE6AF2954E03400C23AF5 /* Managed */ = {
+			isa = PBXGroup;
+			children = (
+				222CE6B629550ECB00C23AF5 /* ManagedGeneralData.swift */,
+				222CE6B82955592800C23AF5 /* ManagedCharacter.swift */,
+				222CE6BD2955649500C23AF5 /* ManagedEpisodes.swift */,
+				222CE6BF295566EF00C23AF5 /* ManagedLocation.swift */,
+			);
+			path = Managed;
+			sourceTree = "<group>";
+		};
+		222CE6BA295560C600C23AF5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				222CE6BB295560E600C23AF5 /* String+strip.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		222CE6C1295567B200C23AF5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				222CE6AA2954DD5300C23AF5 /* APIError.swift */,
+				222CE6B229550DFE00C23AF5 /* APIModels.swift */,
+				222CE6B429550E8200C23AF5 /* APIQueries.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,17 +786,22 @@
 			files = (
 				222CE65A29522C3C00C23AF5 /* CustomCell.swift in Sources */,
 				222CE64C29522BF000C23AF5 /* UIButton+IconInfo.swift in Sources */,
+				222CE6C0295566EF00C23AF5 /* ManagedLocation.swift in Sources */,
+				222CE6B529550E8200C23AF5 /* APIQueries.swift in Sources */,
 				222CE6392952295B00C23AF5 /* TableStyles.swift in Sources */,
 				222CE66829522D4100C23AF5 /* AdaptiveLayout.swift in Sources */,
 				222CE62F295228D100C23AF5 /* UIButton+FontInfo.swift in Sources */,
 				222CE6A129538D1100C23AF5 /* GenderTag.swift in Sources */,
 				222CE6872952CBB700C23AF5 /* HomeDelegate.swift in Sources */,
 				222CE64029522B9D00C23AF5 /* CustomTableCell.swift in Sources */,
+				222CE6BC295560E600C23AF5 /* String+strip.swift in Sources */,
 				222CE65B29522C3C00C23AF5 /* ViewHasTable.swift in Sources */,
 				222CE64D29522BF000C23AF5 /* AppIcons.swift in Sources */,
+				222CE6B92955592800C23AF5 /* ManagedCharacter.swift in Sources */,
 				222CE6732952522E00C23AF5 /* ViewCode.swift in Sources */,
 				222CE6752952541400C23AF5 /* ViewHasCollection.swift in Sources */,
 				222CE68E2952CEF900C23AF5 /* CollectionStyle.swift in Sources */,
+				222CE6AE2954DE2800C23AF5 /* ErrorWarnings.swift in Sources */,
 				222CE66A29522D4100C23AF5 /* UIView+AdpativeLayout.swift in Sources */,
 				222CE66929522D4100C23AF5 /* Screens.swift in Sources */,
 				222CE6A92954DB6200C23AF5 /* FilterType.swift in Sources */,
@@ -753,11 +812,13 @@
 				222CE65E29522C7600C23AF5 /* TableCellData.swift in Sources */,
 				222CE697295381D600C23AF5 /* SearchHandler.swift in Sources */,
 				222CE67129524FBA00C23AF5 /* HomeView.swift in Sources */,
+				222CE6B329550DFE00C23AF5 /* APIModels.swift in Sources */,
 				222CE66729522D4100C23AF5 /* ScreenInfo.swift in Sources */,
 				222CE66129522CE700C23AF5 /* GeneralTableDelegate.swift in Sources */,
 				222CE6372952295B00C23AF5 /* CustomTable.swift in Sources */,
 				222CE6A62953C7DA00C23AF5 /* FilterButton.swift in Sources */,
 				222CE6942952E09200C23AF5 /* SearchDelegate.swift in Sources */,
+				222CE6AB2954DD5300C23AF5 /* APIError.swift in Sources */,
 				222CE64129522B9D00C23AF5 /* GeneralTableCell.swift in Sources */,
 				222CE6812952834300C23AF5 /* CharacterCell.swift in Sources */,
 				222CE6902952D96F00C23AF5 /* ColorAsset.swift in Sources */,
@@ -765,7 +826,9 @@
 				222CE62E295228D100C23AF5 /* UILabel+FontInfo.swift in Sources */,
 				222CE5EB295226D200C23AF5 /* AppDelegate.swift in Sources */,
 				222CE64E29522BF000C23AF5 /* UIImage+AppIcons.swift in Sources */,
+				222CE6B12954E07300C23AF5 /* APIManager.swift in Sources */,
 				222CE630295228D100C23AF5 /* FontInfo.swift in Sources */,
+				222CE6B729550ECB00C23AF5 /* ManagedGeneralData.swift in Sources */,
 				222CE6892952CCF200C23AF5 /* InfosController.swift in Sources */,
 				222CE65329522C1500C23AF5 /* AppColors.swift in Sources */,
 				222CE5ED295226D200C23AF5 /* SceneDelegate.swift in Sources */,
@@ -779,6 +842,7 @@
 				222CE6A329538D5900C23AF5 /* StatusTag.swift in Sources */,
 				222CE62D295228D100C23AF5 /* UIFont+setupFont.swift in Sources */,
 				222CE64B29522BF000C23AF5 /* IconInfo.swift in Sources */,
+				222CE6BE2955649500C23AF5 /* ManagedEpisodes.swift in Sources */,
 				222CE65429522C1500C23AF5 /* UIColors+AppColors.swift in Sources */,
 				222CE64529522BD900C23AF5 /* CustomButton.swift in Sources */,
 				222CE66E29522D6300C23AF5 /* Dimension.swift in Sources */,

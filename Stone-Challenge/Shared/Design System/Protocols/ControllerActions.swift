@@ -1,7 +1,7 @@
 /* Gui Reis    -    gui.sreis25@gmail.com */
 
 
-/// Os tipos que estão de acrodo com esse protocolos são controllers que possuem uma view
+/// Os tipos que estão de acordo com esse protocolos são controllers que possuem uma view
 /// com view code.
 protocol ControllerActions {
         

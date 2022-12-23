@@ -39,6 +39,20 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        APIManager.shared.newQuery() { result in
+            switch result {
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error.devWarning)
+            }
+        }
+    }
+    
+    
     
     /* MARK: - Protocolos */
     
@@ -109,5 +123,23 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     
     private func filterAction(with item: any TagInfo) {
         self.myView.updateMenuTagSelected(to: item)
+        
+        switch item.filter {
+        case .gender:
+            if item.name == "none" {
+                APIManager.genderFilter = nil
+            } else {
+                APIManager.genderFilter = item.name
+            }
+
+        case .status:
+            if item.name == "none" {
+                APIManager.statusFilter = nil
+            } else {
+                APIManager.statusFilter = item.name
+            }
+        
+        default: break
+        }
     }
 }
