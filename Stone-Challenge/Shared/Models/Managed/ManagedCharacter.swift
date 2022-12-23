@@ -1,5 +1,10 @@
 /* Macro - Grupo 05 */
 
+/* Biblioteca necessárias */
+import class UIKit.UIImage
+
+import UIKit
+
 
 /// Modelo de dados usado para as informações de um personagem
 struct ManagedCharacter {
@@ -18,31 +23,32 @@ struct ManagedCharacter {
     let origin: ManagedLocation
     let location: ManagedLocation
     
-    let imageLink: String
-    let imageName: String?
     let episodes: ManagedEpisodes
     
-    var isImageDownloaded: Bool {
-        return self.imageName != nil
-    }
+    let imageLink: String
+    
+    var image: UIImage? { UIImage.loadFromDisk(imageName: self.imageName) }
+    
     
     
     
     /* MARK: - Construtores */
     
-    init(id: Int, page: Int, name: String, status: StatusTag, gender: GenderTag, species: String, type: String, origin: ManagedLocation, location: ManagedLocation, imageLink: String, imageName: String?, episodes: ManagedEpisodes) {
+    init(id: Int, page: Int, name: String, status: StatusTag, gender: GenderTag, species: String, type: String, origin: ManagedLocation, location: ManagedLocation, episodes: ManagedEpisodes, imageLink: String) {
         self.id = id
         self.page = page
+        
         self.name = name
         self.status = status
         self.gender = gender
         self.species = species
         self.type = type
+        
         self.origin = origin
         self.location = location
-        self.imageLink = imageLink
-        self.imageName = imageName
+        
         self.episodes = episodes
+        self.imageLink = imageLink
     }
     
     
@@ -62,9 +68,8 @@ struct ManagedCharacter {
             id: 0,
             name: apiResult.location.name
         )
-        self.imageLink = apiResult.image
-        self.imageName = nil
         
         self.episodes = ManagedEpisodes(episodesUrl: apiResult.episode)
+        self.imageLink = apiResult.image
     }
 }

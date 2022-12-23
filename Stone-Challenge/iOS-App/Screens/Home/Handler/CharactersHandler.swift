@@ -16,7 +16,7 @@ class CharactersHandler: NSObject, CollectionHandler {
     /* MARK: - Encapsulamento */
     
     /// Dados que vào ser usados na collection
-    public var mainData: [String] = [] {
+    public var mainData: [ManagedCharacter] = [] {
         didSet {
             self.setupDatas()
         }
@@ -50,7 +50,7 @@ class CharactersHandler: NSObject, CollectionHandler {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCell.identifier, for: indexPath) as? CharacterCell else { return UICollectionViewCell() }
         
         let data = self.mainData[indexPath.row]
-        cell.setupCell(with: data)
+        cell.setupCell(with: data, col: collectionView)
         
         return cell
     }
@@ -63,6 +63,13 @@ class CharactersHandler: NSObject, CollectionHandler {
         self.homeDelegate?.openCharacterPage(at: indexPath.row)
     }
     
+    
+    
+    /* MARK: - Delegate */
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 171, height: 190)
+    }
     
     
     /* MARK: - Configurações */

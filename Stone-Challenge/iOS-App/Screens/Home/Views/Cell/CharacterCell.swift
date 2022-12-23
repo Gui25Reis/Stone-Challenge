@@ -49,13 +49,23 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
     
     /// Configura a célula a partir do dado
     /// - Parameter data: dado que a célula vai receber
-    public func setupCell(with data: String) {
-        self.imageView.image = UIImage()
-        self.nameLabel.text = ""
+    public func setupCell(with data: ManagedCharacter, col: UICollectionView) {
+        if let image = data.image {
+            self.imageView.image = image
+            
+        } else {
+            //DispatchQueue(label: "Baixando imagem", attributes: .concurrent).async {
+                UIImage.downloadImage(
+                    in: data.imageLink, for: self.imageView, fileName: data.imageName, col: col
+                )
+            //}
+        }
         
-        let color: UIColor = .red
-        self.backgroundColor = color.withAlphaComponent(0.5)
-        self.layer.borderColor = color.cgColor
+        self.nameLabel.text = data.name
+        
+        let color = UIColor(data.status.color)
+        self.backgroundColor = color?.withAlphaComponent(0.5)
+        self.layer.borderColor = color?.cgColor
     }
     
 
@@ -69,6 +79,25 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
     }
     
     
+//    override func prepareForReuse() {
+////        super.prepareForReuse()
+//        
+//        self.clearCellForReuse()
+//    }
+    
+    
+    
+    /* MARK: - Configurações */
+    
+    private func clearCellForReuse() {
+//        self.imageView.image = nil
+//        self.nameLabel.text = nil
+        
+        self.dynamicCall()
+        print("Limpando")
+    }
+    
+    
     
     /* MARK: - Protocolo */
     
@@ -79,13 +108,14 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
     
     
     internal func setupUI() {
-        self.layer.cornerRadius = self.superview?.getEquivalent(10) ?? 10
+        self.layer.cornerRadius = self.superview?.getEquivalent(15) ?? 15
+        self.layer.borderWidth = self.superview?.getEquivalent(3) ?? 3
     }
         
     
     internal func setupFonts() {
         self.nameLabel.setupText(with: FontInfo(
-            fontSize: self.superview?.getEquivalent(17) ?? 17, weight: .regular
+            fontSize: self.superview?.getEquivalent(20) ?? 20, weight: .regular
         ))
     }
     
@@ -101,25 +131,22 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
             self.imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: space),
             self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: space),
             self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -space),
-            self.imageView.heightAnchor.constraint(equalToConstant: imageWidth)
+            self.imageView.heightAnchor.constraint(equalToConstant: imageWidth),
+            
+            
+            self.nameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.nameLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
+            self.nameLabel.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor),
+            self.nameLabel.trailingAnchor.constraint(equalTo: self.imageView.trailingAnchor)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
     
     
-    internal func setupStaticConstraints() {
-        NSLayoutConstraint.activate([
-            self.nameLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
-            self.nameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            self.nameLabel.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor),
-            self.nameLabel.trailingAnchor.constraint(equalTo: self.imageView.trailingAnchor)
-        ])
-    }
-    
+    internal func setupStaticConstraints() {}
     
     internal func setupStaticTexts() {}
-    
     
     internal func setupView() {}
 }

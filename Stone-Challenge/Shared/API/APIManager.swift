@@ -27,6 +27,39 @@ class APIManager {
     private init() {}
     
     
+    public func getApiData(_ completionHandler: @escaping (Result<[ManagedCharacter], APIError>) -> Void) {
+        let urlRequest = self.getUrl()
+        
+        self.newQuery(with: urlRequest) { result in
+            switch result {
+            case .failure(let error):
+                return completionHandler(.failure(error))
+                
+            case .success(let data):
+                // Erro na hora de decodificar
+                guard let result = try? JSONDecoder().decode(APIData.self, from: data) else {
+                    return completionHandler(.failure(.badDecode))
+                }
+                
+                // API retornou um erro
+                guard result.error == nil else {
+                    return completionHandler(.failure(.noResult))
+                }
+                
+                let characterInfo = self.createData(with: result)
+                
+                if characterInfo.isEmpty {
+                    return completionHandler(.failure(.noResult))
+                }
+                
+                completionHandler(.success(characterInfo))
+            }
+        }
+    }
+    
+    
+    
+    
     /**
         Faz a chamada da API com base na palavra chave.
      
@@ -37,61 +70,32 @@ class APIManager {
             - Result: lista dos livors recebidos (lista com no máximo 40 livros)
             - Error: erro caso tenha algum
     */
-    public func newQuery(_ completionHandler: @escaping (Result<[ManagedCharacter], APIError>) -> Void) -> Void {
-                
-        // Erro na URL
-        let urlRequest = self.getUrl()
-        
-        guard let url = URL(string: urlRequest) else {
+    public func newQuery(with urlPath: String, _ completionHandler: @escaping (Result<Data, APIError>) -> Void) {
+        guard let url = URL(string: urlPath) else {
             completionHandler(.failure(.badURL))
             return
         }
         
-        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             // Erro da sessão
             if let error = error {
-                completionHandler(.failure(.url(error as? URLError)))
-                return
+                return completionHandler(.failure(.url(error as? URLError)))
             }
             
             // Não fez conexão com a API: servidor ou internet off
             if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-                completionHandler(.failure(.badResponse(statusCode: response.statusCode)))
-                return
+                return completionHandler(.failure(.badResponse(statusCode: response.statusCode)))
             }
             
             // Erro na hora de pagar os dados
             guard let data = data else {
-                completionHandler(.failure(.badData))
-                return
+                return completionHandler(.failure(.badData))
             }
             
-            // Erro na hora de decodificar
-            guard let result = try? JSONDecoder().decode(APIData.self, from: data) else {
-                completionHandler(.failure(.badDecode))
-                return
-            }
-            
-            // API retornou um erro
-            guard result.error == nil else {
-                completionHandler(.failure(.noResult))
-                return
-            }
-            
-            let characterInfo = self.createData(with: result)
-            
-            if characterInfo.isEmpty {
-                completionHandler(.failure(.noResult))
-                return
-            }
-            
-            completionHandler(.success(characterInfo))
+            completionHandler(.success(data))
         }
         task.resume()
     }
-
-
     
     
     private func getUrl() -> String {

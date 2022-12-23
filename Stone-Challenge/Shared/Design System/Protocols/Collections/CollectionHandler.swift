@@ -11,7 +11,7 @@ import protocol UIKit.UICollectionViewDelegateFlowLayout
 
 /// Os tipos que estào de acordo com esse protocolo lidam com o funcionamento de uma collection,
 /// tanto o delegate quanto o data source dela
-protocol CollectionHandler: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+protocol CollectionHandler: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     /// Registra uma célula
     /// - Parameter collection: collection que vai ser registrada

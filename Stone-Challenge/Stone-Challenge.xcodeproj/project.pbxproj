@@ -74,6 +74,7 @@
 		222CE6BC295560E600C23AF5 /* String+strip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6BB295560E600C23AF5 /* String+strip.swift */; };
 		222CE6BE2955649500C23AF5 /* ManagedEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6BD2955649500C23AF5 /* ManagedEpisodes.swift */; };
 		222CE6C0295566EF00C23AF5 /* ManagedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6BF295566EF00C23AF5 /* ManagedLocation.swift */; };
+		222CE6C32955799500C23AF5 /* UIImage+downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CE6C22955799500C23AF5 /* UIImage+downloadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		222CE6BB295560E600C23AF5 /* String+strip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+strip.swift"; sourceTree = "<group>"; };
 		222CE6BD2955649500C23AF5 /* ManagedEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedEpisodes.swift; sourceTree = "<group>"; };
 		222CE6BF295566EF00C23AF5 /* ManagedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedLocation.swift; sourceTree = "<group>"; };
+		222CE6C22955799500C23AF5 /* UIImage+downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+downloadImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				222CE61D295226EB00C23AF5 /* Shared */,
-				222CE6BA295560C600C23AF5 /* Extensions */,
 				222CE5E9295226D200C23AF5 /* iOS-App */,
 				222CE603295226D500C23AF5 /* Stone-ChallengeTests */,
 				222CE60D295226D500C23AF5 /* Stone-ChallengeUITests */,
@@ -250,6 +251,7 @@
 				222CE66229522D2400C23AF5 /* AdaptiveLayout */,
 				222CE6A72954DA4400C23AF5 /* API */,
 				222CE65C29522C6E00C23AF5 /* Models */,
+				222CE6BA295560C600C23AF5 /* Extensions */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -640,6 +642,7 @@
 			isa = PBXGroup;
 			children = (
 				222CE6BB295560E600C23AF5 /* String+strip.swift */,
+				222CE6C22955799500C23AF5 /* UIImage+downloadImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				222CE6BC295560E600C23AF5 /* String+strip.swift in Sources */,
 				222CE65B29522C3C00C23AF5 /* ViewHasTable.swift in Sources */,
 				222CE64D29522BF000C23AF5 /* AppIcons.swift in Sources */,
+				222CE6C32955799500C23AF5 /* UIImage+downloadImage.swift in Sources */,
 				222CE6B92955592800C23AF5 /* ManagedCharacter.swift in Sources */,
 				222CE6732952522E00C23AF5 /* ViewCode.swift in Sources */,
 				222CE6752952541400C23AF5 /* ViewHasCollection.swift in Sources */,

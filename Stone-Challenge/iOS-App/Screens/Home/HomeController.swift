@@ -7,6 +7,9 @@ import class UIKit.UIMenu
 import class UIKit.UIViewController
 
 
+import UIKit
+
+
 
 /// Controller da tela principal
 class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchProtocol {
@@ -36,20 +39,14 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
         super.viewDidLoad()
         
         self.setupController()
+        self.comunicateWithApi()
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        APIManager.shared.newQuery() { result in
-            switch result {
-            case .success(let data):
-                print(data)
-            case .failure(let error):
-                print(error.devWarning)
-            }
-        }
+        self.myView.reloadCollectionData()
     }
     
     
@@ -96,7 +93,37 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     }
     
     
+    
     /* MARK: - Configurações */
+    
+    private func comunicateWithApi() {
+        let group = DispatchGroup()
+        group.enter()
+        
+        APIManager.shared.getApiData() { result in
+            defer {group.leave()}
+            
+            switch result {
+            case .failure(let error):
+                print(error.devWarning)
+                
+            case .success(let data):
+                group.notify(queue: .main) {
+                    self.setupCollectionData(with: data)
+                }
+            }
+        }
+    }
+    
+    
+    private func setupCollectionData(with data: [ManagedCharacter]) {
+        self.myView.reloadCollectionData()
+        self.collectionHandler.mainData = data
+        self.myView.reloadCollectionData()
+    }
+    
+    
+    
     
     /// Cria o context menu para a célula de mostrar os estados disponiveis
     /// - Parameter cell: célula que vai ser atribuida o menu
