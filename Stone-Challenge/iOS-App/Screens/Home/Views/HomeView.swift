@@ -18,6 +18,9 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     private let genderFilter = FilterButton(title: "Gender")
     
     
+    private let filterStack = CustomStack(axis: .horizontal)
+    
+    
     private let scroll = CustomScroll()
     
     
@@ -96,20 +99,24 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     
     func setupHierarchy() {
         self.addSubview(self.scroll)
-        self.scroll.addViewInScroll(self.statusFilter)
-        self.scroll.addViewInScroll(self.genderFilter)
+        
+        self.filterStack.addArrangedSubview(self.statusFilter)
+        self.filterStack.addArrangedSubview(self.genderFilter)
+        self.scroll.addViewInScroll(self.filterStack)
         self.scroll.addViewInScroll(self.mainCollection)
+        
+        
     }
     
     
     func setupStaticConstraints() {
         NSLayoutConstraint.activate([
-            self.statusFilter.topAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.topAnchor),
-            
-            self.genderFilter.centerYAnchor.constraint(equalTo: self.statusFilter.centerYAnchor),
-            
-            self.mainCollection.topAnchor.constraint(equalTo: self.statusFilter.bottomAnchor),
-            self.mainCollection.bottomAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.bottomAnchor)
+//            self.statusFilter.topAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.topAnchor),
+//
+//            self.genderFilter.centerYAnchor.constraint(equalTo: self.statusFilter.centerYAnchor),
+//
+//            self.mainCollection.topAnchor.constraint(equalTo: self.statusFilter.bottomAnchor),
+//            self.mainCollection.bottomAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -126,6 +133,10 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
         let filterHeight: CGFloat = lateral*2
         
         let collectionHeight = self.mainCollection.collection.contentSize.height
+        print("Altura collection: \(collectionHeight)")
+        
+        
+        self.filterStack.spacing = lateral
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
 
@@ -137,20 +148,8 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
             self.scroll.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
-            self.statusFilter.leadingAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
-            self.statusFilter.trailingAnchor.constraint(equalTo: self.scroll.centerXAnchor, constant: -between),
-            self.statusFilter.heightAnchor.constraint(equalToConstant: filterHeight),
-            
-            
-            self.genderFilter.leadingAnchor.constraint(equalTo: self.scroll.centerXAnchor, constant: between),
-            self.genderFilter.trailingAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
-            self.genderFilter.heightAnchor.constraint(equalToConstant: filterHeight),
-            
-            
-            self.mainCollection.leadingAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
-            self.mainCollection.trailingAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
-            
-            //self.mainCollection.heightAnchor.constraint(equalToConstant: collectionHeight)
+            self.filterStack.heightAnchor.constraint(equalToConstant: filterHeight),
+//            self.mainCollection.heightAnchor.constraint(equalToConstant: collectionHeight),
         ]
 
         NSLayoutConstraint.activate(self.dynamicConstraints)
@@ -158,12 +157,11 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     
     
     func setupUI() {
-        
-        let filterButtonHeight = self.genderFilter.frame.height
+        let filterStackHeight = self.filterStack.frame.height
         let collectionHeight = self.mainCollection.collection.contentSize.height
         
-        let viewHeight = filterButtonHeight + collectionHeight + 10
-        
+        let viewHeight = filterStackHeight + collectionHeight + 16
+
         let viewSize = CGSize(width: self.frame.width, height: viewHeight)
         
         self.scroll.scrollContentSize = viewSize

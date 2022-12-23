@@ -16,11 +16,12 @@ class CustomScroll: UIView {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.backgroundColor = UIColor(.viewBack)
+        
         return scroll
     }()
     
     /// Espaço para colocar os elementos na scroll
-    public let contentView = CustomViews.newView()
+    public let contentView = CustomStack(axis: .vertical)
     
     
     // Constraints
@@ -58,8 +59,8 @@ class CustomScroll: UIView {
     /// Adiciona uma view na scroll
     /// - Parameter view: view que vai ser adicionada
     public func addViewInScroll(_ view: UIView) {
-        self.contentView.addSubview(view)
-        //self.contentView.addArrangedSubview(view)
+//        self.contentView.addSubview(view)
+        self.contentView.addArrangedSubview(view)
     }
     
     
@@ -131,7 +132,7 @@ class CustomScroll: UIView {
             self.scroll.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
-            self.contentView.topAnchor.constraint(equalTo: self.scroll.topAnchor, constant: -safeAreaTop),
+            self.contentView.topAnchor.constraint(equalTo: self.scroll.topAnchor),
             self.contentView.leftAnchor.constraint(equalTo: self.scroll.leftAnchor),
             self.contentView.rightAnchor.constraint(equalTo: self.scroll.rightAnchor),
             self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
