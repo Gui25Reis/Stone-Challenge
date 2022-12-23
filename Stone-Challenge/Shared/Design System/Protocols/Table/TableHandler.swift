@@ -18,4 +18,22 @@ protocol TableHandler: UITableViewDataSource, UITableViewDelegate {
     /// O parâmetro `dataType` é em relação as tabelas que possuem mais de uma seção
     /// e possivelmente outra lista de dados.
     func getDataCount(for dataType: Int) -> Int
+    
+    
+    /// Registra uma célula
+    /// - Parameter collection: collection que vai ser registrada
+    func registerCell(in tables: [CustomTable])
+}
+
+extension TableHandler {
+    
+    /// Linka o data source e delegate na collection
+    /// - Parameter mainTable: collection que vai ser linkada
+    ///
+    /// Essa função também faz o registro da célula
+    func link(with mainTable: [CustomTable]) {
+        self.registerCell(in: mainTable)
+        
+        mainTable.forEach() { $0.setupHandler(with: self) }
+    }
 }

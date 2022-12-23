@@ -62,8 +62,6 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
         
         default: break
         }
-        
-        print("Tag selecionada: \(tagInfo.name)")
     }
     
     
@@ -121,7 +119,7 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     
     
     func setupView() {
-        self.backgroundColor = .systemGray6
+        self.backgroundColor = UIColor(.viewBack)
     }
     
     

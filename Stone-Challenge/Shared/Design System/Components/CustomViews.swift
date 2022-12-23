@@ -35,14 +35,4 @@ struct CustomViews {
         
         return imgV
     }
-    
-    
-    /// Cria uma search bar de acordo com a padronização do projeto
-    static func newSearch() -> UISearchBar {
-        let search = UISearchBar()
-        //search.translatesAutoresizingMaskIntoConstraints = false
-        
-//        search.backgroundColor = .clear
-        return search
-    }
  }

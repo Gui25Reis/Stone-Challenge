@@ -56,7 +56,10 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     /* Home Delegate */
     
     internal func openCharacterPage(at index: Int) {
+        let data = self.collectionHandler.mainData[index]
         
+        let vc = InfosController(character: data)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

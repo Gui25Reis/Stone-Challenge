@@ -67,7 +67,6 @@ class CustomTable: UIView, ViewCode {
         table.tableHeaderView = view
         table.tableFooterView = view
         
-        // TODO: Deletar quando for aplicar o delegate das tabelas
         table.delegate = GeneralTableDelegate.shared
         
         return table
@@ -97,11 +96,12 @@ class CustomTable: UIView, ViewCode {
     
     /* MARK: - Construtor */
     
-    init(style: TableStyle) {
+    init(style: TableStyle, tag: Int = 0) {
         self.style = style
         super.init(frame: .zero)
         
         self.createView()
+        self.setTableTag(for: tag)
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

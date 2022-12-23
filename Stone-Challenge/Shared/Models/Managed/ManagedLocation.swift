@@ -21,7 +21,13 @@ struct ManagedLocation {
     
     init(apiLocation: APILocation) {
         self.id = -1
-        self.name = apiLocation.name
+        
+        if apiLocation.name.isEmpty {
+            self.name = "Unknown"
+        } else {
+            self.name = apiLocation.name
+        }
+        
         
         if let id = self.getLocationId(at: apiLocation.url) {
             self.id = id
