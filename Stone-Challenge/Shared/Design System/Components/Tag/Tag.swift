@@ -47,7 +47,7 @@ class Tag: UIView, ViewCode {
     }
     
     
-    public var defaultSize = CGSize(width: 55, height: 20) {
+    public var defaultSize = CGSize(width: 70, height: 20) {
         didSet {
             self.setupDynamicConstraints()
         }
@@ -116,7 +116,7 @@ class Tag: UIView, ViewCode {
 
         self.dynamicConstraints = [
             self.heightAnchor.constraint(equalToConstant: self.defaultSize.height),
-            self.heightAnchor.constraint(equalToConstant: self.defaultSize.width),
+            self.widthAnchor.constraint(equalToConstant: self.defaultSize.width),
         ]
 
         NSLayoutConstraint.activate(self.dynamicConstraints)

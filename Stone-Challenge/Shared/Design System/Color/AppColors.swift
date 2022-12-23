@@ -79,7 +79,7 @@ enum AppColors {
             
         case .safeAreaColor: return .safeAreaColor
         case .tableBackColor, .collectionBackColor:
-            return .safeAreaColor
+            return .tableColor
             
         default: return nil
         }

@@ -68,8 +68,29 @@ class InfosHandler: NSObject, TableHandler {
         switch tableView.tag {
         
         case 0: // infos gerais
-            let data = self.infoData[indexPath.row]
-            cell.setupCellData(with: data)
+            var data = self.infoData[indexPath.row]
+            
+            switch data.primaryText {
+            case "Gender":
+                let gender = data.secondaryText ?? ""
+                data.secondaryText = nil
+                cell.setupCellData(with: data)
+                
+                cell.setTagInfo = GenderTag.getType(by: gender)
+                
+            case "Status":
+                let status = data.secondaryText ?? ""
+                data.secondaryText = nil
+                cell.setupCellData(with: data)
+                
+                cell.setTagInfo = StatusTag.getType(by: status)
+                
+                
+            default:
+                cell.setupCellData(with: data)
+            }
+            
+            
     
         case 1: // local
             let data = self.placeData[indexPath.row]
@@ -112,7 +133,7 @@ class InfosHandler: NSObject, TableHandler {
             
             self.placeData = [
                 TableCellData(primaryText: "Origin", secondaryText: infos.origin.name),
-                TableCellData(primaryText: "Last location", secondaryText: infos.location.name),
+                TableCellData(primaryText: "Location", secondaryText: infos.location.name),
             ]
             
             

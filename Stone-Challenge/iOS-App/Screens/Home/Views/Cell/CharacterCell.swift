@@ -54,11 +54,9 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
             self.imageView.image = image
             
         } else {
-            //DispatchQueue(label: "Baixando imagem", attributes: .concurrent).async {
-                UIImage.downloadImage(
-                    in: data.imageLink, for: self.imageView, fileName: data.imageName, col: col
-                )
-            //}
+            UIImage.downloadImage(
+                in: data.imageLink, for: self.imageView, fileName: data.imageName, col: col
+            )
         }
         
         self.nameLabel.text = data.name

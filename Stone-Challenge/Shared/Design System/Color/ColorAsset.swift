@@ -24,7 +24,7 @@ enum ColorAsset {
         switch self {
         case .blue: return "blue_92CBCE"
         case .green: return "green_A9CE92"
-        case .pink: return "green_A9CE92"
+        case .pink: return "pink_C692CE"
         case .red: return "red_CE9292"
         case .yellow: return "yellow_CEC192"
         case .gray: return "gray_C4CAD3"
