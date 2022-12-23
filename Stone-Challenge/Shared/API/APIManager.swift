@@ -13,24 +13,63 @@ import Foundation
 */
 class APIManager {
     
-    static var nameFilter: String?
-    
-    static var genderFilter: String?
-    
-    static var statusFilter: String?
-    
+    /* MARK: - Atributos */
     
     static let shared = APIManager()
     
     
+    static var nameFilter: String? {
+        didSet { Self.filterCount += 1 }
+    }
+    
+    static var genderFilter: String? {
+        didSet { Self.filterCount += 1 }
+    }
+    
+    static var statusFilter: String? {
+        didSet { Self.filterCount += 1 }
+    }
+    
+    
+    /* Filtros */
+    
+    private var isFiltering = false
+    
+    static var filterCount = 0
+    
+    private var lastFilter = 0
+    
+    
+    /* Cache */
+    
+    private var filterRequests: ManagedGeneralData?
+    
+    private var characterRequests = ManagedGeneralData()
+    
+    private var characterCache: [Int: [ManagedCharacter]] = [:]
+    
+    
+    
+    /* MARK: - Construtor */
     
     private init() {}
+    
+    
+    
+    /* MARK: - Encapsulamento */
+    
+    public func saveOnCache(data: [ManagedCharacter]) {
+        let lastPage = self.characterRequests.lastPage
+        guard self.characterCache[lastPage] == nil else { return }
+        
+        self.characterCache[lastPage] = data
+    }
     
     
     public func getApiData(_ completionHandler: @escaping (Result<[ManagedCharacter], APIError>) -> Void) {
         let urlRequest = self.getUrl()
         
-        self.newQuery(with: urlRequest) { result in
+        self.newQuery(with: urlRequest.url) { result in
             switch result {
             case .failure(let error):
                 return completionHandler(.failure(error))
@@ -46,7 +85,7 @@ class APIManager {
                     return completionHandler(.failure(.noResult))
                 }
                 
-                let characterInfo = self.createData(with: result)
+                let characterInfo = self.createData(with: result, toCache: urlRequest)
                 
                 if characterInfo.isEmpty {
                     return completionHandler(.failure(.noResult))
@@ -59,17 +98,6 @@ class APIManager {
     
     
     
-    
-    /**
-        Faz a chamada da API com base na palavra chave.
-     
-        - Parametros:
-            - text: palavra chave para fazer a busca na API
- 
-        - CompletionHandler:
-            - Result: lista dos livors recebidos (lista com no máximo 40 livros)
-            - Error: erro caso tenha algum
-    */
     public func newQuery(with urlPath: String, _ completionHandler: @escaping (Result<Data, APIError>) -> Void) {
         guard let url = URL(string: urlPath) else {
             completionHandler(.failure(.badURL))
@@ -98,7 +126,10 @@ class APIManager {
     }
     
     
-    private func getUrl() -> String {
+    
+    /* MARK: - Configurações */
+    
+    private func getUrl() -> APIUrl {
         var filterQuery = ""
         
         if let name = Self.nameFilter {
@@ -116,14 +147,93 @@ class APIManager {
         }
         
         
-        if filterQuery.isEmpty { return APIQueries.allCaracters.query }
-        return "\(APIQueries.filtered.query)\(filterQuery)"
+        if filterQuery.isEmpty {
+            self.isFiltering = false
+            self.filterRequests = nil
+            return APIUrl(queryType: .allCaracters)
+        }
+        
+        self.isFiltering = true
+        return APIUrl(queryType: .filtered, filter: filterQuery)
     }
     
     
     
-    private func createData(with apiData: APIData) -> [ManagedCharacter] {
+    private func createData(with apiData: APIData, toCache: APIUrl) -> [ManagedCharacter] {
         guard let result = apiData.results else { return [] }
-        return result.map { ManagedCharacter(apiResult: $0) }
+        self.saveRequest(with: apiData)
+        
+        let characters = result.map { ManagedCharacter(apiResult: $0) }
+        
+        self.saveOnCache(data: characters)
+        
+        return characters
+    }
+    
+    
+    
+    private func saveRequest(with apiData: APIData) {
+        guard let infos = apiData.info else { return }
+        
+        if !self.characterRequests.hasData {
+            let pagesNumbers = Array(2...infos.pages).shuffled()
+            self.characterRequests.pagesToSearch = pagesNumbers
+            
+            self.characterRequests.pages = infos.pages
+            self.characterRequests.count = infos.count
+        }
+        
+        if isFiltering {
+//            if var filterRequests {
+//                let pagesNumbers = Array(2...infos.pages).shuffled()
+//                filterRequests.pagesToSearch = pagesNumbers
+//
+//                filterRequests.pages = infos.pages
+//                filterRequests.count = infos.count
+//                return
+//            }
+//
+//            guard self.lastFilter != Self.filterCount else { return }
+//
+//
+//            let pagesNumbers = Array(2...infos.pages).shuffled()
+//            self.filterRequests.pagesToSearch = pagesNumbers
+//
+//            self.filterRequests.pages = infos.pages
+//            self.filterRequests.count = infos.count
+        }
+    }
+    
+    
+    private func getNewPage() -> Int? {
+        var requests: ManagedGeneralData? = self.characterRequests
+        if isFiltering {
+            requests = self.filterRequests
+        }
+        
+        guard var requests else { return nil }
+        
+        if let newPage = requests.pagesToSearch?.first {
+            requests.pagesToSearch?.remove(at: 0)
+            return newPage
+        }
+        // Foram todas as páginas
+        return -1
+    }
+}
+
+
+struct APIUrl {
+    let url: String
+    let queryType: APIQueries
+    
+    init(queryType: APIQueries) {
+        self.queryType = queryType
+        self.url = queryType.query
+    }
+    
+    init(queryType: APIQueries, filter: String) {
+        self.queryType = queryType
+        self.url = "\(queryType.query)\(filter)"
     }
 }
