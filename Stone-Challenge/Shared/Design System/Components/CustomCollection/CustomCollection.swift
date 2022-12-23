@@ -32,6 +32,8 @@ public class CustomCollection: UIView, ViewCode {
         col.showsHorizontalScrollIndicator = false
         col.showsVerticalScrollIndicator = false
         
+        col.isScrollEnabled = false
+        
         col.backgroundColor = .clear
         return col
     }()
@@ -98,7 +100,7 @@ public class CustomCollection: UIView, ViewCode {
     public func reloadCollectionData() {
         self.collection.reloadData()
         self.collection.reloadInputViews()
-//        self.setupDynamicConstraints()
+        self.setupDynamicConstraints()
     }
     
     

@@ -1,7 +1,15 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import UIKit
+import class Foundation.NSObject
+import struct Foundation.IndexPath
+
+import struct CoreGraphics.CGSize
+
+import class UIKit.UICollectionView
+import class UIKit.UICollectionViewCell
+import class UIKit.UICollectionViewLayout
+
 
 
 class CharactersHandler: NSObject, CollectionHandler {
@@ -16,11 +24,7 @@ class CharactersHandler: NSObject, CollectionHandler {
     /* MARK: - Encapsulamento */
     
     /// Dados que vào ser usados na collection
-    public var mainData: [ManagedCharacter] = [] {
-        didSet {
-            self.setupDatas()
-        }
-    }
+    public var mainData: [ManagedCharacter] = []
     
     
     /// Define a comunicaçào entre o handler e a controller
@@ -65,17 +69,9 @@ class CharactersHandler: NSObject, CollectionHandler {
     
     
     
-    /* MARK: - Delegate */
+    /* MARK: - Flow Layout */
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 171, height: 190)
-    }
-    
-    
-    /* MARK: - Configurações */
-    
-    /// Configura os dados da tabela
-    private func setupDatas() {
-        
     }
 }

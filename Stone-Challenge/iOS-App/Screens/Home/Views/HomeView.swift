@@ -18,6 +18,9 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     private let genderFilter = FilterButton(title: "Gender")
     
     
+    private let scroll = CustomScroll()
+    
+    
     internal var mainCollection: CustomCollection = CustomCollection()
     
     
@@ -89,31 +92,24 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     
     /* MARK: - Protocolo */
     
-    /* ViewHasCollection */
-    
-    func registerCells() {
-        self.mainCollection.collection.register(CharacterCell.self, forCellWithReuseIdentifier: CharacterCell.identifier)
-    }
-    
-    
     /* View Code */
     
     func setupHierarchy() {
-        self.addSubview(self.statusFilter)
-        self.addSubview(self.genderFilter)
-        self.addSubview(self.mainCollection)
+        self.addSubview(self.scroll)
+        self.scroll.addViewInScroll(self.statusFilter)
+        self.scroll.addViewInScroll(self.genderFilter)
+        self.scroll.addViewInScroll(self.mainCollection)
     }
     
     
     func setupStaticConstraints() {
         NSLayoutConstraint.activate([
-            self.statusFilter.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.statusFilter.topAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.topAnchor),
             
             self.genderFilter.centerYAnchor.constraint(equalTo: self.statusFilter.centerYAnchor),
             
-
             self.mainCollection.topAnchor.constraint(equalTo: self.statusFilter.bottomAnchor),
-            self.mainCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            self.mainCollection.bottomAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -129,28 +125,49 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
         
         let filterHeight: CGFloat = lateral*2
         
+        let collectionHeight = self.mainCollection.collection.contentSize.height
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
 
         self.dynamicConstraints = [
-            self.statusFilter.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
-            self.statusFilter.trailingAnchor.constraint(equalTo: self.centerXAnchor, constant: -between),
+            self.scroll.topAnchor.constraint(equalTo: self.topAnchor),
+            self.scroll.leftAnchor.constraint(equalTo: self.leftAnchor),
+            self.scroll.rightAnchor.constraint(equalTo: self.rightAnchor),
+            self.scroll.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.scroll.widthAnchor.constraint(equalTo: self.widthAnchor),
+            
+            
+            self.statusFilter.leadingAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
+            self.statusFilter.trailingAnchor.constraint(equalTo: self.scroll.centerXAnchor, constant: -between),
             self.statusFilter.heightAnchor.constraint(equalToConstant: filterHeight),
             
             
-            self.genderFilter.leadingAnchor.constraint(equalTo: self.centerXAnchor, constant: between),
-            self.genderFilter.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
+            self.genderFilter.leadingAnchor.constraint(equalTo: self.scroll.centerXAnchor, constant: between),
+            self.genderFilter.trailingAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             self.genderFilter.heightAnchor.constraint(equalToConstant: filterHeight),
             
             
-            self.mainCollection.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
-            self.mainCollection.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral)
+            self.mainCollection.leadingAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
+            self.mainCollection.trailingAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
+            
+            //self.mainCollection.heightAnchor.constraint(equalToConstant: collectionHeight)
         ]
 
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
     
     
-    func setupUI() {}
+    func setupUI() {
+        
+        let filterButtonHeight = self.genderFilter.frame.height
+        let collectionHeight = self.mainCollection.collection.contentSize.height
+        
+        let viewHeight = filterButtonHeight + collectionHeight + 10
+        
+        let viewSize = CGSize(width: self.frame.width, height: viewHeight)
+        
+        self.scroll.scrollContentSize = viewSize
+    }
     
     func setupStaticTexts() {}
         

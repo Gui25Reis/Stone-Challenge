@@ -77,25 +77,6 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
     }
     
     
-//    override func prepareForReuse() {
-////        super.prepareForReuse()
-//        
-//        self.clearCellForReuse()
-//    }
-    
-    
-    
-    /* MARK: - Configurações */
-    
-    private func clearCellForReuse() {
-//        self.imageView.image = nil
-//        self.nameLabel.text = nil
-        
-        self.dynamicCall()
-        print("Limpando")
-    }
-    
-    
     
     /* MARK: - Protocolo */
     
@@ -108,6 +89,12 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
     internal func setupUI() {
         self.layer.cornerRadius = self.superview?.getEquivalent(15) ?? 15
         self.layer.borderWidth = self.superview?.getEquivalent(3) ?? 3
+    }
+    
+    
+    internal func setupStaticTexts() {
+        self.imageView.image = UIImage(asset: .defaultImage)
+        self.nameLabel.text = ""
     }
         
     
@@ -143,8 +130,6 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
     
     
     internal func setupStaticConstraints() {}
-    
-    internal func setupStaticTexts() {}
     
     internal func setupView() {}
 }
