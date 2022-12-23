@@ -30,10 +30,8 @@ class CustomStack: UIStackView {
         self.sameDimensionValue = sameDimension
         
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.axis = axis
-        self.distribution = .equalSpacing
+        self.setupView(axis: axis)
     }
     
     
@@ -56,7 +54,7 @@ class CustomStack: UIStackView {
     
     
     
-    /* MARK: - Configurações */
+    /* MARK: - Encapsulamento */
     
     /// Pega o espaçamento entre os elementos
     /// - Parameter space: tamanho dos elementos adicionados
@@ -95,9 +93,23 @@ class CustomStack: UIStackView {
             height += $0.frame.height
         }
         
-        let space = CGFloat(self.arrangedSubviews.count-1) * spaceBetween
-        height += space
+        var space = spaceBetween
+        if space == 0 { space = self.spacing }
+        
+        let value = CGFloat(self.arrangedSubviews.count-1) * space
+        height += value
         
         return height
+    }
+    
+    
+    
+    /* MARK: - Configurações */
+    
+    private func setupView(axis: NSLayoutConstraint.Axis) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.axis = axis
+        self.distribution = .equalSpacing
     }
 }

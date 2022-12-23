@@ -17,14 +17,22 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     /// Botão de filtrar pelo genêro
     private let genderFilter = FilterButton(title: "Gender")
     
+    /// Stack para deixar os botões de filtragem
+    private let filterStack: CustomStack = {
+        let stack = CustomStack(axis: .horizontal, sameDimension: .height)
+        stack.distribution = .fillEqually
+        return stack
+    }()
     
-    private let filterStack = CustomStack(axis: .horizontal)
+    /// Carregar novos dados
+    private lazy var reloadButton: CustomButton = {
+        let bt = CustomButton()
+        bt.mainColor = .systemBlue
+        return bt
+    }()
     
     
-    private let scroll = CustomScroll()
-    
-    
-    internal var mainCollection: CustomCollection = CustomCollection()
+    internal var mainCollection: CustomCollection = CustomCollection(style: .justCollection)
     
     
     
@@ -51,7 +59,7 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
         self.setupCollection()
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
@@ -71,6 +79,8 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     }
     
     
+    /* Ações de botões */
+    
     public func setStatusFilterMenu(with menu: UIMenu) {
         self.statusFilter.setButtonMenu(with: menu)
     }
@@ -79,7 +89,11 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     public func setGenderFilterMenu(with menu: UIMenu) {
         self.genderFilter.setButtonMenu(with: menu)
     }
-
+    
+    /// Define a ação do botão de carregar novos dados
+    public func setNewDayAction(target: Any?, action: Selector) -> Void {
+        self.reloadButton.addTarget(target, action: action, for: .touchDown)
+    }
     
     
 
@@ -98,76 +112,72 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     /* View Code */
     
     func setupHierarchy() {
-        self.addSubview(self.scroll)
+        self.addSubview(self.filterStack)
+        self.addSubview(self.mainCollection)
+        self.addSubview(self.reloadButton)
         
         self.filterStack.addArrangedSubview(self.statusFilter)
         self.filterStack.addArrangedSubview(self.genderFilter)
-        self.scroll.addViewInScroll(self.filterStack)
-        self.scroll.addViewInScroll(self.mainCollection)
-        
-        
     }
     
     
     func setupStaticConstraints() {
         NSLayoutConstraint.activate([
-//            self.statusFilter.topAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.topAnchor),
-//
-//            self.genderFilter.centerYAnchor.constraint(equalTo: self.statusFilter.centerYAnchor),
-//
-//            self.mainCollection.topAnchor.constraint(equalTo: self.statusFilter.bottomAnchor),
-//            self.mainCollection.bottomAnchor.constraint(equalTo: self.scroll.safeAreaLayoutGuide.bottomAnchor)
+            self.filterStack.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+
+            self.reloadButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
     }
     
     
     func setupView() {
-        self.backgroundColor = UIColor(.viewBack)
+        self.backgroundColor = .systemGray6
     }
     
     
     func setupDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(16)
-        let between: CGFloat = lateral/2
+        let between: CGFloat = self.getEquivalent(10)
         
         let filterHeight: CGFloat = lateral*2
-        
-        let collectionHeight = self.mainCollection.collection.contentSize.height
-        print("Altura collection: \(collectionHeight)")
-        
+        let butHeight: CGFloat = self.getEquivalent(44)
         
         self.filterStack.spacing = lateral
+        
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
 
         self.dynamicConstraints = [
-            self.scroll.topAnchor.constraint(equalTo: self.topAnchor),
-            self.scroll.leftAnchor.constraint(equalTo: self.leftAnchor),
-            self.scroll.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.scroll.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            self.scroll.widthAnchor.constraint(equalTo: self.widthAnchor),
-            
-            
+            self.filterStack.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
+            self.filterStack.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             self.filterStack.heightAnchor.constraint(equalToConstant: filterHeight),
-//            self.mainCollection.heightAnchor.constraint(equalToConstant: collectionHeight),
+            
+            
+            self.mainCollection.topAnchor.constraint(equalTo: self.statusFilter.bottomAnchor, constant: between),
+            self.mainCollection.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
+            self.mainCollection.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
+            self.mainCollection.bottomAnchor.constraint(equalTo: self.reloadButton.topAnchor, constant: -between),
+            
+            
+            self.reloadButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -between),
+            self.reloadButton.heightAnchor.constraint(equalToConstant: butHeight),
+            self.reloadButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6)
         ]
-
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
     
     
     func setupUI() {
-        let filterStackHeight = self.filterStack.frame.height
-        let collectionHeight = self.mainCollection.collection.contentSize.height
-        
-        let viewHeight = filterStackHeight + collectionHeight + 16
-
-        let viewSize = CGSize(width: self.frame.width, height: viewHeight)
-        
-        self.scroll.scrollContentSize = viewSize
+        self.reloadButton.layer.cornerRadius = self.getEquivalent(10)
     }
     
-    func setupStaticTexts() {}
+    func setupStaticTexts() {
+        self.reloadButton.setTitle("Reload data", for: .normal)
+    }
         
-    func setupFonts() {}
+    func setupFonts() {
+        self.reloadButton.setupText(with: FontInfo(
+            fontSize: self.getEquivalent(18), weight: .semibold
+        ))
+    }
 }

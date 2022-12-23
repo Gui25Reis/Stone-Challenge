@@ -81,7 +81,6 @@
 		22DD31112955AF3900CEEA47 /* InfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD31102955AF3900CEEA47 /* InfosCell.swift */; };
 		22DD31152956322A00CEEA47 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD31142956322A00CEEA47 /* AppImages.swift */; };
 		22DD31172956329800CEEA47 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD31162956329800CEEA47 /* UIImage+AppImages.swift */; };
-		22DD311B295635F100CEEA47 /* CustomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD311A295635F100CEEA47 /* CustomScroll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,7 +179,6 @@
 		22DD31102955AF3900CEEA47 /* InfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosCell.swift; sourceTree = "<group>"; };
 		22DD31142956322A00CEEA47 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		22DD31162956329800CEEA47 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
-		22DD311A295635F100CEEA47 /* CustomScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScroll.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,7 +392,6 @@
 				222CE64329522BCD00C23AF5 /* CustomButton */,
 				222CE68A2952CE1A00C23AF5 /* CustomCollection */,
 				222CE6332952294300C23AF5 /* CustomTable */,
-				22DD3119295635E900CEEA47 /* CustomScroll */,
 				222CE63B29522B8700C23AF5 /* CustomViews.swift */,
 			);
 			path = Components;
@@ -734,14 +731,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		22DD3119295635E900CEEA47 /* CustomScroll */ = {
-			isa = PBXGroup;
-			children = (
-				22DD311A295635F100CEEA47 /* CustomScroll.swift */,
-			);
-			path = CustomScroll;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -935,7 +924,6 @@
 				222CE63C29522B8700C23AF5 /* CustomViews.swift in Sources */,
 				222CE5F5295226D200C23AF5 /* Stone_Challenge.xcdatamodeld in Sources */,
 				222CE6A329538D5900C23AF5 /* StatusTag.swift in Sources */,
-				22DD311B295635F100CEEA47 /* CustomScroll.swift in Sources */,
 				222CE62D295228D100C23AF5 /* UIFont+setupFont.swift in Sources */,
 				222CE64B29522BF000C23AF5 /* IconInfo.swift in Sources */,
 				222CE6BE2955649500C23AF5 /* ManagedEpisodes.swift in Sources */,

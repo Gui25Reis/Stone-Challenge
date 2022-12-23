@@ -108,28 +108,31 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
     internal func setupDynamicConstraints() {
         let space: CGFloat = self.superview?.getEquivalent(10) ?? 10
         
-        let imageWidth = self.imageView.frame.width
+        let imageSquare = self.contentView.frame.width - (space*2)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
             self.imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: space),
-            self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: space),
-            self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -space),
-            self.imageView.heightAnchor.constraint(equalToConstant: imageWidth),
-            
-            
-            self.nameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            self.nameLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
-            self.nameLabel.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor),
-            self.nameLabel.trailingAnchor.constraint(equalTo: self.imageView.trailingAnchor)
+            self.imageView.heightAnchor.constraint(equalToConstant: imageSquare),
+            self.imageView.widthAnchor.constraint(equalToConstant: imageSquare),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
     
     
-    internal func setupStaticConstraints() {}
+    internal func setupStaticConstraints() {
+        NSLayoutConstraint.activate([
+            self.imageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            
+            
+            self.nameLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
+            self.nameLabel.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor),
+            self.nameLabel.trailingAnchor.constraint(equalTo: self.imageView.trailingAnchor),
+            self.nameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+        ])
+    }
     
     internal func setupView() {}
 }

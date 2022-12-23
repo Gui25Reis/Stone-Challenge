@@ -6,8 +6,7 @@ import class UIKit.UIBarButtonItem
 import class UIKit.UIMenu
 import class UIKit.UIViewController
 
-
-import UIKit
+import class Foundation.DispatchGroup
 
 
 
@@ -90,7 +89,7 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     
     
     func setupNavigation() {
-        self.title = "Caracters"
+        self.title = "Characters"
         
         self.navigationItem.searchController = self.searchHandler
     }

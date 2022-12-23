@@ -32,8 +32,6 @@ public class CustomCollection: UIView, ViewCode {
         col.showsHorizontalScrollIndicator = false
         col.showsVerticalScrollIndicator = false
         
-        col.isScrollEnabled = false
-        
         col.backgroundColor = .clear
         return col
     }()
@@ -110,7 +108,6 @@ public class CustomCollection: UIView, ViewCode {
         self.collection.delegate = handler
         self.collection.dataSource = handler
     }
-    
     
     
     
