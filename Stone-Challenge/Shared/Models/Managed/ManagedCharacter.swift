@@ -29,6 +29,7 @@ struct ManagedCharacter {
     
     var image: UIImage? { UIImage.loadFromDisk(imageName: self.imageName) }
     
+    var imageName: String { "character_\(self.id).jpeg" }
     
     
     
@@ -59,7 +60,13 @@ struct ManagedCharacter {
         self.status = StatusTag.getType(by: apiResult.status)
         self.gender = GenderTag.getType(by: apiResult.gender)
         self.species = apiResult.species
-        self.type = apiResult.type
+        
+        if apiResult.type.isEmpty {
+            self.type = "-"
+        } else {
+            self.type = apiResult.type
+        }
+        
         self.origin = ManagedLocation(
             id: 0,
             name: apiResult.origin.name
