@@ -1,17 +1,27 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
+
+/* Bibliotecas necessárias: */
 import UIKit
 
 
-/* Bibliotecas necessárias: */
+/// Elementos de UI da célula da tabela de informações de um personagem
 class InfosCell: GeneralTableCell, CustomCell {
     
+    /* MARK: - Atributos */
     
+    /// Tag
     private var tagView: Tag?
     
+    
+    // Protocolo - CustomCell
     
     static var identifier: String = "IdInfosCell"
     
     
+    
+    /* MARK: - Encapsulamento */
+    
+    /// Define a tag da célula
     public var setTagInfo: (any TagInfo)? {
         didSet {
             if let tagInfo = setTagInfo {
@@ -22,9 +32,11 @@ class InfosCell: GeneralTableCell, CustomCell {
     
     
     
+    /* MARK: - Configurações */
+    
+    /// Configura a tag a partir do tipo dela
+    /// - Parameter tagInfo: tipo da tag
     private func setupTag(with tagInfo: any TagInfo) {
-        print("TagInfo recebida: \(tagInfo.name)")
-        
         self.tagView = Tag(tagInfo: tagInfo)
         
         guard let tagView else { return }

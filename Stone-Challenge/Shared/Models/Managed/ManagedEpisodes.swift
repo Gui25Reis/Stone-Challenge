@@ -1,7 +1,7 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 
-/// Modelo de dados usado para as informações dos episódios que um personagem tem aparissão
+/// Modelo de dados usado para as informações dos episódios que um personagem tem parissão
 struct ManagedEpisodes {
     
     /* MARK: - Atributos */

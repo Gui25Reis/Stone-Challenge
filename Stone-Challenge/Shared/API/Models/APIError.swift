@@ -1,11 +1,11 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
 import struct Foundation.URLError
 
 
 /// Possíveis erros que podem acontecer durante a comunicação com a  API
-enum APIError: ErrorWarnings {
+enum APIError: ErrorWarnings, Equatable {
     
     /* MARK: - Casos */
     
@@ -15,6 +15,7 @@ enum APIError: ErrorWarnings {
     case badResponse(statusCode:Int)
     case url(URLError?)
     case noResult
+    case noPageAvaiable
     
     
     
@@ -34,6 +35,9 @@ enum APIError: ErrorWarnings {
         
         case .noResult:
             return "Não foi achado um resultado."
+            
+        case .noPageAvaiable:
+            return "Não tem mais dados pra carregar!"
         }
     }
 
@@ -51,6 +55,9 @@ enum APIError: ErrorWarnings {
 
         case .badResponse(statusCode: let statusCode):
             return "Erro na chamada, status: \(statusCode)"
+        
+        case .noPageAvaiable:
+            return "Foram todas as páginas"
         }
     }
 }

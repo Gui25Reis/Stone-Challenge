@@ -1,10 +1,10 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
 import UIKit
 
 
-/// O que essa classe faz?
+/// Elementos de UI da tela inicial
 class HomeView: UIView, ViewCode, ViewHasCollection {
     
     /* MARK: - Atributos */
@@ -65,7 +65,6 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     
     /* MARK: - Encapsulamento */
     
-    
     public func updateMenuTagSelected(to tagInfo: any TagInfo) {
         switch tagInfo.filter {
         case .gender:
@@ -91,7 +90,7 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
     }
     
     /// Define a ação do botão de carregar novos dados
-    public func setNewDayAction(target: Any?, action: Selector) -> Void {
+    public func setReloadAction(target: Any?, action: Selector) -> Void {
         self.reloadButton.addTarget(target, action: action, for: .touchDown)
     }
     
@@ -171,10 +170,12 @@ class HomeView: UIView, ViewCode, ViewHasCollection {
         self.reloadButton.layer.cornerRadius = self.getEquivalent(10)
     }
     
+    
     func setupStaticTexts() {
         self.reloadButton.setTitle("Reload data", for: .normal)
     }
         
+    
     func setupFonts() {
         self.reloadButton.setupText(with: FontInfo(
             fontSize: self.getEquivalent(18), weight: .semibold

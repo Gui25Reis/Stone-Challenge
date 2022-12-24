@@ -1,4 +1,4 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
 import class Foundation.NSObject
@@ -12,6 +12,7 @@ import class UIKit.UICollectionViewLayout
 
 
 
+/// Lida com a collection que mostra os personagens
 class CharactersHandler: NSObject, CollectionHandler {
     
     /* MARK: - Atributos */
@@ -19,7 +20,7 @@ class CharactersHandler: NSObject, CollectionHandler {
     /// Comunicação com a controller
     private weak var homeDelegate: HomeDelegate?
     
-    
+        
     
     /* MARK: - Encapsulamento */
     
@@ -32,7 +33,7 @@ class CharactersHandler: NSObject, CollectionHandler {
     public func setHomeDelegate(with delegate: HomeDelegate) {
         self.homeDelegate = delegate
     }
-    
+        
     
     
     /* MARK: - Protocolo */

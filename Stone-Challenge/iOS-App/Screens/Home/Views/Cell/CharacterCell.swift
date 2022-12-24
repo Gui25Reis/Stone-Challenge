@@ -1,4 +1,4 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
 import UIKit
@@ -133,6 +133,7 @@ class CharacterCell: UICollectionViewCell, CustomCell, ViewCode {
             self.nameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ])
     }
+    
     
     internal func setupView() {}
 }

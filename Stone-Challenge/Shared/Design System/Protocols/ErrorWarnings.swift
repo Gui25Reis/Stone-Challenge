@@ -1,8 +1,8 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 
 /// Os tipos que estão de acordo com esse protocolo lidam com erros que podem ocorrer
-/// durante a aplicação. Esse protocolo define esses possíveis erros
+/// durante a aplicação. Com esse protocolo é possível definir esses possíveis erros
 protocol ErrorWarnings: Error {
     
     /// Avisos para o usuário

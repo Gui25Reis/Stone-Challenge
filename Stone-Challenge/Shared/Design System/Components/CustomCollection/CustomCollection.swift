@@ -1,4 +1,4 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
 import UIKit
@@ -53,7 +53,7 @@ public class CustomCollection: UIView, ViewCode {
     private var labelSpace: CGFloat = 0
     
     
-    // Protocolo
+    // Protocolo - View Code
     
     internal var dynamicConstraints: [NSLayoutConstraint] = []
     
@@ -94,7 +94,7 @@ public class CustomCollection: UIView, ViewCode {
     
     /* Collection */
     
-    /// Atualiza os dados da table
+    /// Atualiza os dados da collection
     public func reloadCollectionData() {
         self.collection.reloadData()
         self.collection.reloadInputViews()
@@ -122,7 +122,6 @@ public class CustomCollection: UIView, ViewCode {
     
     
     /* MARK: - Protocolo */
-    
     
     /* View Code */
     

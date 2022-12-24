@@ -1,12 +1,14 @@
 /* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
+import class Foundation.DispatchGroup
+
 import class UIKit.UIAction
+import class UIKit.UIAlertAction
 import class UIKit.UIBarButtonItem
 import class UIKit.UIMenu
+import class UIKit.UIAlertController
 import class UIKit.UIViewController
-
-import class Foundation.DispatchGroup
 
 
 
@@ -52,6 +54,15 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     
     /* MARK: - Protocolos */
     
+    ///  Ação do botão de atualizar os dados
+    @objc private func reloadDataAction() {
+        self.comunicateWithApi(isAgain: true)
+    }
+    
+    
+    
+    /* MARK: - Protocolos */
+    
     /* Home Delegate */
     
     internal func openCharacterPage(at index: Int) {
@@ -77,6 +88,8 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
         
         let genderMenu = self.createMenu(for: GenderTag.self)
         self.myView.setGenderFilterMenu(with: genderMenu)
+        
+        self.myView.setReloadAction(target: self, action: #selector(self.reloadDataAction))
     }
     
     
@@ -98,7 +111,7 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     
     /* MARK: - Configurações */
     
-    private func comunicateWithApi() {
+    private func comunicateWithApi(isAgain: Bool = false) {
         let group = DispatchGroup()
         group.enter()
         
@@ -107,11 +120,19 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
             
             switch result {
             case .failure(let error):
-                print(error.devWarning)
+                self.dealWithError(error: error)
                 
             case .success(let data):
                 group.notify(queue: .main) {
                     self.setupCollectionData(with: data)
+                    
+                    if isAgain {
+                        let warning = self.createPopUp(
+                            title: "Novos dadoooos",
+                            description: "O que voce pediu já está disponível"
+                        )
+                        self.navigationController?.present(warning, animated: true)
+                    }
                 }
             }
         }
@@ -123,7 +144,6 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
         self.collectionHandler.mainData = data
         self.myView.reloadCollectionData()
     }
-    
     
     
     
@@ -170,5 +190,36 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
         
         default: break
         }
+    }
+    
+    
+    private func dealWithError(error: APIError) {
+        print(error.devWarning)
+        
+        if error != .noResult {
+            let warning = self.createPopUp(title: "Calma lá campeão", description: error.userWarning)
+            self.navigationController?.present(warning, animated: true)
+        }
+    }
+    
+    
+    /* MARK: - Errors */
+    
+    /// Cria um popup de aviso com o erro que aconteceu
+    /// - Parameter error: erro
+    /// - Returns: pop up com a mensagem do erro
+    ///
+    /// O pop up não é apresentado, apenas criado.
+    private func createPopUp(title: String, description: String) -> UIAlertController {
+        let alert = UIAlertController(
+            title: title,
+            message: description,
+            preferredStyle: .alert
+        )
+        
+        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        
+        return alert
     }
 }

@@ -1,6 +1,7 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 
+/// Modelo de dado usado para pegar as informações iniciais da api
 struct APIData: Codable {
     let info: APIInfo?
     let results: [APIResult]?
@@ -8,12 +9,14 @@ struct APIData: Codable {
 }
 
 
+/// Modelo de dado usado para as informações do resultado da API
 struct APIInfo: Codable {
     let count: Int
     let pages: Int
 }
 
 
+/// Modelo de dado usado para as informações dos personagens
 struct APIResult: Codable {
     let id: Int
     let name: String
@@ -30,6 +33,7 @@ struct APIResult: Codable {
 }
 
 
+/// Modelo de dado usado para as informações de localizaçào de um personagem
 struct APILocation: Codable {
     let name: String
     let url: String

@@ -1,4 +1,4 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
 import UIKit
@@ -6,9 +6,15 @@ import UIKit
 
 extension UIImage {
     
-    
-
-    static func downloadImage(in url: String, for view: UIImageView, fileName: String, col: UICollectionView) {
+    /// Faz o download de uma imagem online
+    /// - Parameters:
+    ///   - url: url da imagem
+    ///   - view: view que vai apresentar a imagem
+    ///   - fileName: nome do arquivo para salvar no disco
+    ///   - col: collection view
+    ///
+    /// Caso tenha uma collection ela é atualiza quando a imagem for colocada.
+    static func downloadImage(in url: String, for view: UIImageView, fileName: String, col: UICollectionView?) {
         let group = DispatchGroup()
         group.enter()
         APIManager.shared.newQuery(with: url) { result in
@@ -17,20 +23,14 @@ extension UIImage {
             switch result {
             case .success(let data):
                 if let image = UIImage(data: data) {
-                    DispatchQueue(label: "Safe image", attributes: .concurrent).async {
-                        Self.saveOnDisk(image: image, with: fileName)
-                    }
+                    Self.saveOnDisk(image: image, with: fileName)
                     
                     group.notify(queue: .main) {
                         view.image = image
-                        print("Coloquei a imagem!")
                         
-                        col.reloadData()
-                        col.reloadInputViews()
+                        col?.reloadData()
+                        col?.reloadInputViews()
                     }
-                    
-                } else {
-                    print("Deu erro na imagem")
                 }
 
             case .failure(let erro):
@@ -40,6 +40,10 @@ extension UIImage {
     }
     
     
+    /// Salva uma imagem no dispositivo
+    /// - Parameters:
+    ///   - image: image
+    ///   - name: nome do arquivo
     static func saveOnDisk(image: UIImage?, with name: String) {
         let directory = try? FileManager.default.url(
             for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false
@@ -50,13 +54,14 @@ extension UIImage {
         let data = image?.jpegData(compressionQuality: 1)
         
         if let data, let fileUrl {
-            if let _ = try? data.write(to: fileUrl) {
-                print("Imagem salva! -> \(name)")
-            }
+            let _ = try? data.write(to: fileUrl) 
         }
     }
     
     
+    /// Carrega uma imagem salva no disco que foi baixada (não são considerados os assets)
+    /// - Parameter imageName: nome da imagem
+    /// - Returns: imagem
     static func loadFromDisk(imageName: String) -> UIImage? {
         let dir = try? FileManager.default.url(
             for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false

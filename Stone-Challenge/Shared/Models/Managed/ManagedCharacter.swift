@@ -1,9 +1,7 @@
-/* Macro - Grupo 05 */
+/* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Biblioteca necessárias */
 import class UIKit.UIImage
-
-import UIKit
 
 
 /// Modelo de dados usado para as informações de um personagem
