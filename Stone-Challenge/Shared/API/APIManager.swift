@@ -140,6 +140,16 @@ class APIManager {
     }
     
     
+    /// Pega todos os dados que estào no cache
+    /// - Returns: dados do cache
+    public func getDataCached() -> [ManagedCharacter] {
+        var data: [ManagedCharacter] = []
+        self.characterCache.forEach() { data += $0.value }
+        
+        return data
+    }
+    
+    
     
     /* MARK: - Configurações */
     
@@ -154,16 +164,6 @@ class APIManager {
         guard self.characterCache[lastPage] == nil else { return }
         
         self.characterCache[lastPage] = data
-    }
-    
-    
-    /// Pega todos os dados que estào no cache
-    /// - Returns: dados do cache
-    private func getDataCached() -> [ManagedCharacter] {
-        var data: [ManagedCharacter] = []
-        self.characterCache.forEach() { data += $0.value }
-        
-        return data
     }
     
     

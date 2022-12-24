@@ -61,5 +61,6 @@ class SearchHandler: UISearchController, UISearchBarDelegate {
     /// Configurações inicias da classe
     private func setupHandler() {
         self.searchBar.delegate = self
+        self.searchBar.showsCancelButton = true
     }
 }

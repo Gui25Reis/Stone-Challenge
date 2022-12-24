@@ -29,13 +29,18 @@ class SearchDelegate: NSObject, UISearchBarDelegate {
     
     /* MARK: - Delegate */
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        self.searchProtocol?.filterData(by: searchText.lowercased())
-//    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchProtocol?.filterData(by: searchText.lowercased())
+    }
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let text = searchBar.text?.lowercased() ?? ""
         self.searchProtocol?.filterData(by: text)
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchProtocol?.filterData(by: nil)
     }
 }

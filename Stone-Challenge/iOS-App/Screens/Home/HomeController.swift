@@ -27,6 +27,9 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     /// Handler da search bar da navigation
     private let searchHandler = SearchHandler()
     
+    /// Boleano que indica se está filtrando
+    private var isFiltering = false
+    
     
     
     /* MARK: - Ciclo de Vida */
@@ -52,11 +55,20 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     
     
     
-    /* MARK: - Protocolos */
+    /* MARK: - Ações de Botões */
     
-    ///  Ação do botão de atualizar os dados
+    /// Ação do botão de atualizar os dados
     @objc private func reloadDataAction() {
-        self.comunicateWithApi(isAgain: true)
+        if isFiltering {
+            let warning = self.createPopUp(
+                title: "Pera lá",
+                description: "Ainda existe filtro! Remova eles antes de fazer uma nova busca"
+            )
+            self.navigationController?.present(warning, animated: true)
+            
+        } else {
+            self.comunicateWithApi(isAgain: true)
+        }
     }
     
     
@@ -75,8 +87,65 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
     
     /* Search Protocol */
     
-    func filterData(by textSearch: String) {
+    func filterData(by textSearch: String?) {
+        self.isFiltering = true
+        let allData = APIManager.shared.getDataCached()
         
+        var dataFiltered: [ManagedCharacter] = []
+        
+        // Loop Unrolling
+        if let textSearch {
+            self.isFiltering = false
+            
+            if textSearch == "" {
+                return self.setupCollectionData(with: allData)
+            }
+            
+            for data in allData {
+                if data.name.lowercased().contains(textSearch) {
+                    dataFiltered.append(data)
+                    continue
+                }
+                
+                if self.checkFilters(for: data) { dataFiltered.append(data) }
+            }
+            
+        } else {
+            if APIManager.statusFilter != nil || APIManager.genderFilter != nil {
+                for data in allData {
+                    if self.checkFilters(for: data) {
+                        dataFiltered.append(data)
+                    }
+                }
+            } else {
+                self.isFiltering = false
+                return self.setupCollectionData(with: allData)
+            }
+        }
+        
+        
+        self.setupCollectionData(with: dataFiltered)
+    }
+        
+    
+    private func checkFilters(for data: ManagedCharacter) -> Bool {
+        var statusCheck: Bool? = nil
+        if let status = APIManager.statusFilter {
+            statusCheck = data.status.name == status
+        }
+        
+        var genderCheck: Bool? = nil
+        if let gender = APIManager.genderFilter {
+            genderCheck = data.gender.name == gender
+        } else {
+            return statusCheck ?? false
+        }
+        
+        if let statusCheck, let genderCheck {
+            return statusCheck && genderCheck
+        } else {
+            return genderCheck ?? false
+        }
     }
     
     
@@ -190,6 +259,8 @@ class HomeController: UIViewController, ControllerActions, HomeDelegate, SearchP
         
         default: break
         }
+        
+        self.filterData(by: nil)
     }
     
     

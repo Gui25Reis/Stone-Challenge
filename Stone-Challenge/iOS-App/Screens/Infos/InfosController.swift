@@ -1,10 +1,11 @@
 /* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
+import class Foundation.NSCoder
+
 import class UIKit.UIViewController
 import class UIKit.UIView
 
-import UIKit
 
 
 /// Controller da tela de informações de um personagem
@@ -18,6 +19,7 @@ class InfosController: UIViewController, ControllerActions {
     
     /// Handler da table de informa;còes do personagens
     private let tableHandler = InfosHandler()
+    
     
     
     /* MARK: - Construtor */
@@ -49,14 +51,7 @@ class InfosController: UIViewController, ControllerActions {
     
     
     
-    private func setupTableData(with data: ManagedCharacter) {
-        self.tableHandler.mainData = data
-        self.myView.reloadTableData()
-    }
-    
-    
     /* MARK: - Protocolos */
-    
     
     /* Controller Action */
     
@@ -71,5 +66,14 @@ class InfosController: UIViewController, ControllerActions {
     func setupNavigation() {
         self.title = "Infos"
         self.navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    
+    
+    /* MARK: - Configurações */
+    
+    private func setupTableData(with data: ManagedCharacter) {
+        self.tableHandler.mainData = data
+        self.myView.reloadTableData()
     }
 }
