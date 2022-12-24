@@ -1,5 +1,8 @@
 /* Gui Reis    -    gui.sreis25@gmail.com */
 
+/* Bibliotecas necessárias: */
+import class UIKit.UIColor
+
 
 /// Casos de uso das cores usadas no projeto
 enum AppColors {
@@ -8,33 +11,93 @@ enum AppColors {
     
     /* Status */
     
-    /// Status: entrada/início
-    case startStatus
+    case statusUnknown
     
-    /// Status: saída/fim
-    case endStatus
+    case statusAlive
+    
+    case statusDead
     
     
-    /* System */
+    /* Gender */
     
-    /// Cor das safe areas
+    case genderMale
+    
+    case genderFemale
+    
+    case genderGenderless
+    
+    case genderUnknown
+    
+    
+    case noneTag
+
+    
+    /* Componentes */
+    
+    /// Safe areas
     case safeAreaColor
     
-    /// Cor das tabelas
-    case tableColor
+    /// Fundo das tabelas
+    case tableBackColor
     
+    /// Fundo das tabelas
+    case collectionBackColor
+    
+    /// Cor do botão
+    case button
+    
+    
+    /* Geral */
+    
+    /// Fundo das views
+    case viewBack
+    
+    
+    /* Textos */
+    
+    /// Texto mais usados
+    case primaryText
+    
+    /// Textos não tão usados
+    case secondaryText
     
     
     /* MARK: - Nome das cores */
     
-    /// Nome da cor
-    var colorName: String {
+    /// Nome do asset da cor
+    var colorAsset: ColorAsset? {
         switch self {
-        case .startStatus: return "blue_92B1CE"
-        case .endStatus: return "green_A9CE92"
+        case .statusAlive: return .green
+        case .statusDead: return  .red
             
-        case .safeAreaColor: return "safeAreaColor"
-        case .tableColor: return "tableColor"
+        case .statusUnknown, .genderUnknown:
+            return .gray
+            
+        case .genderMale: return .blue
+        case .genderFemale: return .pink
+        case .genderGenderless: return .yellow
+            
+        case .safeAreaColor: return .safeAreaColor
+        case .tableBackColor, .collectionBackColor:
+            return .tableColor
+            
+        default: return nil
+        }
+    }
+    
+    
+    /// Nome da cor usada do sistema
+    var systemColor: UIColor? {
+        switch self {
+        case .button: return .systemBlue
+        case .viewBack: return .systemGray6
+        
+        case .primaryText: return .label
+        case .secondaryText: return .white
+        
+        case .noneTag: return .clear
+            
+        default: return nil
         }
     }
 }

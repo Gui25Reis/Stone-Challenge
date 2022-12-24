@@ -1,6 +1,8 @@
 /* Gui Reis    -    gui.sreis25@gmail.com */
 
 /* Bibliotecas necessárias: */
+import struct CoreGraphics.CGFloat
+
 import class UIKit.NSCoder
 import class UIKit.UIColor
 import class UIKit.UIImage
@@ -18,6 +20,15 @@ class GeneralTableCell: UITableViewCell, CustomTableCell {
     /// Diz se possui uma imagem no canto direito da célula
     internal var hasRightIcon = false
     
+    
+    /// Espaço lateral direito da célula
+    ///
+    /// Caso precise colocar uma view de acordo com o espaçamento
+    internal var rightLateralSpace: CGFloat {
+        var lateral: CGFloat = 8
+        if !self.hasRightIcon { lateral *= 2 }
+        return lateral
+    }
     
     
     /* MARK: - Construtor */
@@ -78,7 +89,7 @@ class GeneralTableCell: UITableViewCell, CustomTableCell {
     
     /// Personalização da UI
     private func setupUI() {
-        self.backgroundColor = UIColor(.tableColor)
+        self.backgroundColor = UIColor(.tableBackColor)
     }
     
     
