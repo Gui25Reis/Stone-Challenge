@@ -18,9 +18,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let nav = self.createNavigation(for: HomeController())
+        
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = HomeController()
-        self.window?.makeKeyAndVisible()
+        
+        if let window {
+            window.rootViewController = nav
+            window.makeKeyAndVisible()
+        }
+    }
+    
+    
+    
+    /* MARK: - Configurações */
+    
+    /// Cria uma navigation controller para uma controller
+    /// - Parameter vc: controller que vai receber a navigation controller
+    /// - Returns: navigation controller
+    private func createNavigation(for vc: UIViewController) -> UINavigationController {
+        let nav = UINavigationController()
+        nav.navigationBar.prefersLargeTitles = true
+        nav.pushViewController(vc, animated: true)
+        
+        return nav
     }
 }
-

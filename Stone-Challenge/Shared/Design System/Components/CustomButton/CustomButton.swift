@@ -20,6 +20,13 @@ class CustomButton: UIButton {
     
     /* MARK: - Override */
     
+    override var menu: UIMenu? {
+        didSet {
+            self.showsMenuAsPrimaryAction = true
+        }
+    }
+    
+    
     // Muda a posição que o UIMenu vai ser apresentado
     override func menuAttachmentPoint(for configuration: UIContextMenuConfiguration) -> CGPoint {
         let original = super.menuAttachmentPoint(for: configuration)

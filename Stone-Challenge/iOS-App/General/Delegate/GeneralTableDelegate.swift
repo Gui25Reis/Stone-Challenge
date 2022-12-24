@@ -7,28 +7,11 @@ import UIKit
 /// Delegate geral da table
 class GeneralTableDelegate: NSObject, UITableViewDelegate {
     
-    // TODO: Deletar quando for aplicar o delegate das tabelas
+    
     static let shared = GeneralTableDelegate()
     
-    /* MARK: - Atributos */
     
-    /// Comunicação entre o delegate com ...
-//    private weak var nomeProtocol: ?
-        
 
-    
-    /* MARK: - Encapsulamento */
-    
-    /** 
-        Define qual vai ser o protocolo do delegate
-        - Parameter protocol: protocolo de comunicação
-    */
-//    public func setProtocol(with protocol: ) {
-//        self.nomeProtocol = protocol
-//    }
-    
-    
-    
     /* MARK: - Delegate */
     
     /// Ação de quando clica em uma célula
