@@ -22,7 +22,7 @@ Esse desafio foi feito no perído de duas semanas, entre 12/12/22 até 23/12/22 
 
 1. [Plataforma e Requerimentos](#plataforma-e-requerimentos)
 2. [Frameworks Usados](#frameworks-usados)
-3. [Protótipo](#protótipo)
+3. [Demonstração](#demonstração)
 4. [Idiomas](#idiomas-disponíveis)
 5. [Documentação](#documentação)
 6. [Licença](#licença)
@@ -45,22 +45,21 @@ O app foi feito com swift 5.7 e todo código criado e utilizado está nesse repo
 | Core Data     | Caching para dados locais
 
 
-## Protótipo
+## Demonstração
+A applicação possui a sua versão no modo escuro (dark mode) e claro (light mode).
 <p align="center">
-    <img width=45% src="https://github.com/Gui25Reis/Stone-Challenge/blob/main/Arquivos/Imagens/Prototipos/Tela_01.png"/>
-    <img width=45% src="https://github.com/Gui25Reis/Stone-Challenge/blob/main/Arquivos/Imagens/Prototipos/Tela_02.png"/>
+    <img src="https://github.com/Gui25Reis/Stone-Challenge/blob/main/Arquivos/Imagens/Telas/Preview.png"/>
 </p>
 
 
 ## Idiomas disponíveis
 |     **Idiomas**     |
 |---------------------|
-| Português - Brasil  |
 | Inglês              |
 
 
 ## Documentação
-A documentação será construida na [wiki](https://github.com/Gui25Reis/Stone-Challenge/wiki) do projeto.
+A documentação do projeto se encontra na [wiki](https://github.com/Gui25Reis/Stone-Challenge/wiki) do projeto.
 
 
 ## Licença
